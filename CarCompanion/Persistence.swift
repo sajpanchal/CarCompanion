@@ -14,8 +14,8 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
        
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        let newItem = Item(context: viewContext)
+        newItem.timestamp = Date()
         
         do {
             try viewContext.save()
