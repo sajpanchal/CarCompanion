@@ -11,7 +11,7 @@ import CoreData
 
 struct ContentView: View {
 
-    
+    @State var totalTravel: Double?
     var body: some View {
         NavigationView {
              VStack {
@@ -20,14 +20,21 @@ struct ContentView: View {
                         VStack {
                             HStack {
                                 Text("Odometer Reading")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.semibold)
                                     .font(.footnote)
                                     .foregroundColor(Color.black)
                                 Spacer()
-                                Text("123,111,222,333.22 km")
+                                TextField("Tap to Set it", value: $totalTravel, format: .number)
                                     .foregroundColor(.blue)
-                                    .fontWeight(.bold)
                                     .font(.caption)
+                                    .multilineTextAlignment(.trailing)
+                                if(totalTravel != nil) {
+                                Text("km")
+                                    .foregroundColor(.blue)
+                                    .font(.caption)
+                                }
+
+                                   
                             }
                             .padding(10)
                             .background(Color(red: 0.819, green: 0.819, blue: 0.819, opacity: 1))
@@ -54,7 +61,7 @@ struct ContentView: View {
                                     .font(.footnote)
                                     .foregroundColor(Color.black)
                                 Spacer()
-                                Text("20.12 l")
+                                Text("20.12 litre")
                                     .foregroundColor(.blue)
                                     .fontWeight(.bold)
                                     .font(.caption)
@@ -74,12 +81,12 @@ struct ContentView: View {
                             Text("Fueling at the gas station?")
                                 .font(.title3)
                                 .fontWeight(.bold)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.white)
                             Spacer()
                         }
-                        .frame( height: 40, alignment: .center)
+                        .frame(width: 300, height: 30, alignment: .center)
                     }
-                    .background(Color.yellow)
+                    .background(Color.blue)
                     .cornerRadius(50)
                        
                     }
@@ -87,15 +94,14 @@ struct ContentView: View {
                      }
                  Spacer()
                  HStack {
-                     Spacer()
-                 Text("Fuel Efficiency History")
-                     .font(.title)
-                     .fontWeight(.black)
-                     .foregroundColor(Color.white)
+                 Text("FUEL EFFICIENCY HISTORY")
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.gray)
+                    .frame(height: 40, alignment: .leading)
+                    .padding(.leading, 5)
                      Spacer()
                  }
-                 .frame(height: 40, alignment: .center)
-                 .background(Color.blue)
                  List {
                      VStack {
                          HStack {
@@ -111,7 +117,7 @@ struct ContentView: View {
                                  Text("Fuelling")
                                      .font(.subheadline)
                                      .fontWeight(.bold)
-                                 Text("100.00 l")
+                                 Text("100.00 litre")
                                      .font(.subheadline)
                              }
                              Spacer()
