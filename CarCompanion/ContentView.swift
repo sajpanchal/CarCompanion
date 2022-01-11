@@ -11,7 +11,7 @@ import CoreData
 
 struct ContentView: View {
 
-    
+    @State var totalTravel: Double?
     var body: some View {
         NavigationView {
              VStack {
@@ -20,47 +20,49 @@ struct ContentView: View {
                         VStack {
                             HStack {
                                 Text("Odometer Reading")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.semibold)
                                     .font(.footnote)
-                                    .foregroundColor(Color.black)
                                 Spacer()
-                                Text("123,111,222,333.22 km")
-                                    .foregroundColor(.blue)
-                                    .fontWeight(.bold)
-                                    .font(.caption)
+                                TextField("Tap to Set it", value: $totalTravel, format: .number)
+                                    .font(.system(size: 14, weight: .bold, design: .default))
+                                    .multilineTextAlignment(.trailing)
+                                    .foregroundColor(Color.blue)
+                                if(totalTravel != nil) {
+                                Text("km")
+                                        .font(.system(size: 14, weight: .bold, design: .default))
+                                        .foregroundColor(Color.blue)
+                                }
+
+                                   
                             }
                             .padding(10)
-                            .background(Color(red: 0.819, green: 0.819, blue: 0.819, opacity: 1))
+                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
                             .cornerRadius(10)
                          
                             HStack {
                                 Text("Travel Since last fueling")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.semibold)
                                     .font(.footnote)
-                                    .foregroundColor(Color.black)
                                 Spacer()
                                 Text("123.22 km")
-                                    .foregroundColor(.blue)
-                                    .fontWeight(.bold)
-                                    .font(.caption)
+                                    .font(.system(size: 14, weight: .bold, design: .default))
+                                    .foregroundColor(Color.blue)
                             }
                             .padding(10)
-                            .background(Color(red: 0.819, green: 0.819, blue: 0.819, opacity: 1))
+                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
                             .cornerRadius(10)
                             
                             HStack {
                                 Text("Amount of fuel filled")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.semibold)
                                     .font(.footnote)
-                                    .foregroundColor(Color.black)
                                 Spacer()
-                                Text("20.12 l")
-                                    .foregroundColor(.blue)
-                                    .fontWeight(.bold)
-                                    .font(.caption)
+                                Text("20.12 litre")
+                                    .font(.system(size: 14, weight: .bold, design: .default))
+                                    .foregroundColor(Color.blue)
                             }
                             .padding(10)
-                            .background(Color(red: 0.819, green: 0.819, blue: 0.819, opacity: 1))
+                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
                             .cornerRadius(10)
                         }
                         .padding(.vertical, 20)
@@ -72,14 +74,14 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             Text("Fueling at the gas station?")
-                                .font(.title3)
+                                .font(.body)
                                 .fontWeight(.bold)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.white)
                             Spacer()
                         }
-                        .frame( height: 40, alignment: .center)
+                        .frame(width: 300, height: 30, alignment: .center)
                     }
-                    .background(Color.yellow)
+                    .background(Color.blue)
                     .cornerRadius(50)
                        
                     }
@@ -87,15 +89,14 @@ struct ContentView: View {
                      }
                  Spacer()
                  HStack {
-                     Spacer()
-                 Text("Fuel Efficiency History")
-                     .font(.title)
-                     .fontWeight(.black)
-                     .foregroundColor(Color.white)
+                 Text("FUEL EFFICIENCY HISTORY")
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.gray)
+                    .frame(height: 40, alignment: .leading)
+                    .padding(.leading, 5)
                      Spacer()
                  }
-                 .frame(height: 40, alignment: .center)
-                 .background(Color.blue)
                  List {
                      VStack {
                          HStack {
@@ -103,24 +104,32 @@ struct ContentView: View {
                                  Text("Travel")
                                      .font(.subheadline)
                                      .fontWeight(.bold)
+                                     .foregroundColor(.gray)
                                  Text("100.23 km")
-                                     .font(.subheadline)
+                                     .font(.system(size: 14, weight: .semibold, design: .default))
+                                     .foregroundColor(.blue)
+                                   
+                                 
                              }
                              Spacer()
                              VStack {
                                  Text("Fuelling")
                                      .font(.subheadline)
                                      .fontWeight(.bold)
-                                 Text("100.00 l")
-                                     .font(.subheadline)
+                                     .foregroundColor(.gray)
+                                 Text("100.00 litre")
+                                     .font(.system(size: 14, weight: .semibold, design: .default))
+                                     .foregroundColor(.blue)
                              }
                              Spacer()
                              VStack {
                                  Text("Efficiency")
                                      .font(.subheadline)
                                      .fontWeight(.bold)
-                                 Text("10.23 km/l")
-                                     .font(.subheadline)
+                                     .foregroundColor(.gray)
+                                 Text("10.23 kmpl")
+                                     .font(.system(size: 14, weight: .semibold, design: .default))
+                                     .foregroundColor(.blue)
                              }
                          }
                          Spacer()
