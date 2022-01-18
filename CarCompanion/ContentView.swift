@@ -14,15 +14,19 @@ struct ContentView: View {
     @State var totalTravel: Double?
     @State var currentTravel: Double? = 123.22
     @State var fuel: Double? = 10.20
+    
+    @ObservedObject var locationFetcher = LocationFetcher()
+   
     var body: some View {
         NavigationView {
              VStack {
                 Group {
                     VStack {
                         VStack {
+                            
                             SectionView(title: "Odometer Reading", value: $totalTravel)
-                            SectionView(title: "Travel Since last fueling", value: $currentTravel)
-                            SectionView(title: "Amount of fuel filled", value: $fuel)
+                            SectionView(title: "Travel Since last fueling", value: .constant(0.0), constValue: locationFetcher.distance)
+                            SectionView(title: "Amount of fuel filled", value: .constant(0.0), constValue: fuel)
                         }
                         .padding(.vertical, 20)
                                                                     
@@ -59,6 +63,9 @@ struct ContentView: View {
                  FuelEfficiencyListView()
             }
             .frame(alignment: .top)
+            .onAppear(perform: {
+                locationFetcher.start()
+            })
             .navigationTitle(Text("Home"))
         }
     }

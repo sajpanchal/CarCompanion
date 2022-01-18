@@ -10,6 +10,14 @@ import SwiftUI
 struct SectionView: View {
     var title: String
     @Binding var value: Double?
+    var constValue: Double?
+    
+    var formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
     var body: some View {
         HStack {
             Text(title)
@@ -17,13 +25,13 @@ struct SectionView: View {
                 .font(.footnote)
             Spacer()
             if (title == "Odometer Reading") {
-                TextField("Tap to Set it", value: $value, format: .number)
+                TextField("Tap to Set it", value: $value, formatter: formatter)
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Color.blue)
             }
             else {
-                Text(value!, format: .number)
+                Text("\(constValue!, specifier: "%.2f")")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
             }
