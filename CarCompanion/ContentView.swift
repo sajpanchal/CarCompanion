@@ -12,58 +12,17 @@ import CoreData
 struct ContentView: View {
 
     @State var totalTravel: Double?
+    @State var currentTravel: Double? = 123.22
+    @State var fuel: Double? = 10.20
     var body: some View {
         NavigationView {
              VStack {
                 Group {
                     VStack {
                         VStack {
-                            HStack {
-                                Text("Odometer Reading")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                TextField("Tap to Set it", value: $totalTravel, format: .number)
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .multilineTextAlignment(.trailing)
-                                    .foregroundColor(Color.blue)
-                                if(totalTravel != nil) {
-                                Text("km")
-                                        .font(.system(size: 14, weight: .bold, design: .default))
-                                        .foregroundColor(Color.blue)
-                                }
-
-                                   
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
-                         
-                            HStack {
-                                Text("Travel Since last fueling")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                Text("123.22 km")
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .foregroundColor(Color.blue)
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
-                            
-                            HStack {
-                                Text("Amount of fuel filled")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                Text("20.12 litre")
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .foregroundColor(Color.blue)
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
+                            SectionView(title: "Odometer Reading", value: $totalTravel)
+                            SectionView(title: "Travel Since last fueling", value: $currentTravel)
+                            SectionView(title: "Amount of fuel filled", value: $fuel)
                         }
                         .padding(.vertical, 20)
                                                                     
@@ -97,53 +56,7 @@ struct ContentView: View {
                     .padding(.leading, 5)
                      Spacer()
                  }
-                 List {
-                     VStack {
-                         HStack {
-                             VStack {
-                                 Text("Travel")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("100.23 km")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                                   
-                                 
-                             }
-                             Spacer()
-                             VStack {
-                                 Text("Fuelling")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("100.00 litre")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                             }
-                             Spacer()
-                             VStack {
-                                 Text("Efficiency")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("10.23 kmpl")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                             }
-                         }
-                         Spacer()
-                         HStack {
-                             Spacer()
-                             Text(Date(), style: .date)
-                                 .font(.caption2)
-                                 .fontWeight(.light)
-                                 .foregroundColor(.gray)
-                             Spacer()
-                         }
-                     }
-                    
-                 }
+                 FuelEfficiencyListView()
             }
             .frame(alignment: .top)
             .navigationTitle(Text("Home"))
@@ -157,4 +70,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
 

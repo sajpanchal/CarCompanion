@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */; };
+		722193822797194900F121B3 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722193812797194900F121B3 /* SectionView.swift */; };
 		72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */; };
 		72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EE02789FE3D00FD53DB /* ContentView.swift */; };
 		72219EE32789FE3F00FD53DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72219EE22789FE3F00FD53DB /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyListView.swift; sourceTree = "<group>"; };
+		722193812797194900F121B3 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		72219EDB2789FE3D00FD53DB /* CarCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionApp.swift; sourceTree = "<group>"; };
 		72219EE02789FE3D00FD53DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			children = (
 				72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */,
 				72219EE02789FE3D00FD53DB /* ContentView.swift */,
+				722193812797194900F121B3 /* SectionView.swift */,
+				7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */,
 				72219EE22789FE3F00FD53DB /* Assets.xcassets */,
 				72219EE72789FE3F00FD53DB /* Persistence.swift */,
 				72219EE92789FE3F00FD53DB /* CarCompanion.xcdatamodeld */,
@@ -265,8 +271,10 @@
 			files = (
 				72219EE82789FE3F00FD53DB /* Persistence.swift in Sources */,
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
+				722193822797194900F121B3 /* SectionView.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
 				72219EEB2789FE3F00FD53DB /* CarCompanion.xcdatamodeld in Sources */,
+				72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
