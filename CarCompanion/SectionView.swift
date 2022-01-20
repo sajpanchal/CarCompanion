@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SectionView: View {
     var title: String
-    @Binding var value: Double?
-    var constValue: Double?
+    var value: Double
+   
     
     var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -24,24 +24,18 @@ struct SectionView: View {
                 .fontWeight(.semibold)
                 .font(.footnote)
             Spacer()
-            if (title == "Odometer Reading") {
-                TextField("Tap to Set it", value: $value, formatter: formatter)
-                    .font(.system(size: 14, weight: .bold, design: .default))
-                    .multilineTextAlignment(.trailing)
-                    .foregroundColor(Color.blue)
-            }
-            else {
-                Text("\(constValue!, specifier: "%.2f")")
+           
+            
+                Text("\(value, specifier: "%.2f")")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
-            }
             
             if(title == "Amount of fuel filled") {
                 Text("litre")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
             }
-            else if (title == "Odometer Reading" && value != nil) {
+            else if (title == "Odometer Reading") {
                 Text("km")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
@@ -63,6 +57,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(title: "", value: .constant(0.0))
+        SectionView(title: "", value: 0.0)
     }
 }

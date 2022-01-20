@@ -11,9 +11,8 @@ import CoreData
 
 struct ContentView: View {
 
-    @State var totalTravel: Double?
-    @State var currentTravel: Double? = 123.22
-    @State var fuel: Double? = 10.20
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
     
     @ObservedObject var locationFetcher = LocationFetcher()
    
@@ -24,9 +23,9 @@ struct ContentView: View {
                     VStack {
                         VStack {
                             
-                            SectionView(title: "Odometer Reading", value: $totalTravel)
-                            SectionView(title: "Travel Since last fueling", value: .constant(0.0), constValue: locationFetcher.distance)
-                            SectionView(title: "Amount of fuel filled", value: .constant(0.0), constValue: fuel)
+                            SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0)
+                            SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0)
+                            SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0)
                         }
                         .padding(.vertical, 20)
                                                                     
