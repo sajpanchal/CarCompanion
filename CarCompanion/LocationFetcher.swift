@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import CoreData
 
 class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published var currentLocation: CLLocation?
@@ -27,59 +28,26 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
         
         manager.allowsBackgroundLocationUpdates = true
         manager.showsBackgroundLocationIndicator = true
+        
+        carDashboard = CarDashboard.fetchData(viewContext: viewContext)
+        
         if carDashboard == nil {
             carDashboard = CarDashboard(context: viewContext)
             carDashboard?.odometer = 0.0
             carDashboard?.currentTravel = 0.0
             carDashboard?.currentFuel = 0.0
             print("carDashboard is nil")
-            do {
-                try self.viewContext.save()
-            }
-            catch {
-                print("Save failed")
-            }
+            CarDashboard.saveContext(viewContext: viewContext)
         }
-        else {
-            do {
-                carDashboard = try viewContext.fetch(CarDashboard.fetchRequest()).first!
-                print("data found\n odometer:", carDashboard?.odometer)
-                print("current travel:", carDashboard?.currentTravel)
-            }
-            catch {
-                print("error fetching data")
-            }
-        }
+        print("data found\n odometer:", carDashboard!.odometer)
+        print("current travel:", carDashboard!.currentTravel)
             
       
     }
     
     func start() {
         manager.startUpdatingLocation()
-        if carDashboard == nil {
-            carDashboard = CarDashboard(context: viewContext)
-            carDashboard?.odometer = 0.0
-            carDashboard?.currentTravel = 0.0
-            carDashboard?.currentFuel = 0.0
-            print("carDashboard is nil")
-            do {
-                try self.viewContext.save()
-            }
-            catch {
-                print("Save failed")
-            }
-        }
-        else {
-            do {
-                carDashboard = try viewContext.fetch(CarDashboard.fetchRequest()).first!
-                print("data found\n odometer:", carDashboard?.odometer)
-                print("current travel:", carDashboard?.currentTravel)
-            }
-            catch {
-                print("error fetching data")
-            }
-        }
-        
+                
     }
     
     func stop() {
@@ -93,12 +61,7 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
         let difference = lastLocation?.distance(from: currentLocation!)
         carDashboard?.currentTravel += abs(Double(difference!)/1000)
         carDashboard?.odometer += abs(Double(difference!)/1000)
-        do {
-            try self.viewContext.save()
-        }
-        catch {
-            print("Save failed")
-        }
+        CarDashboard.saveContext(viewContext: viewContext)
         
         speed = Double(lastLocation!.speed)/3.6
     }

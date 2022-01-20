@@ -13,7 +13,7 @@ struct ContentView: View {
 
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
-    
+    @State var updateOdometer = false
     @ObservedObject var locationFetcher = LocationFetcher()
    
     var body: some View {
@@ -45,6 +45,23 @@ struct ContentView: View {
                     }
                     .background(Color.blue)
                     .cornerRadius(50)
+                        
+                        Button {
+                            updateOdometer = true
+                        }
+                    label: {
+                        HStack {
+                            Spacer()
+                            Text("Update odometer")
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                        .frame(width: 300, height: 30, alignment: .center)
+                    }
+                    .background(Color.blue)
+                    .cornerRadius(50)
                        
                     }
                     .padding(5)
@@ -65,6 +82,7 @@ struct ContentView: View {
             .onAppear(perform: {
                 locationFetcher.start()
             })
+            .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
             .navigationTitle(Text("Home"))
         }
     }

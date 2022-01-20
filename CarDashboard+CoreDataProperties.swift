@@ -19,6 +19,26 @@ extension CarDashboard {
     @NSManaged public var currentTravel: Double
     @NSManaged public var currentFuel: Double
     @NSManaged public var odometer: Double
+    
+    static func saveContext(viewContext: NSManagedObjectContext) {
+        do {
+            try viewContext.save()
+        }
+        catch {
+            print("save failed")
+        }
+    }
+    static func fetchData(viewContext: NSManagedObjectContext) -> CarDashboard?{
+        var carDashboard: CarDashboard?
+        do {
+            carDashboard = try viewContext.fetch(Self.fetchRequest()).first
+            print("fetch successful")
+        }
+        catch {
+            print("couldn't fetch it.")
+        }
+        return carDashboard
+    }
 
 }
 
