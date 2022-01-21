@@ -11,79 +11,30 @@ import CoreData
 
 struct ContentView: View {
 
-    @State var totalTravel: Double?
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @State var updateOdometer = false
+    @State var addFuel = false
+    @ObservedObject var locationFetcher = LocationFetcher()
+   
     var body: some View {
         NavigationView {
              VStack {
                 Group {
                     VStack {
                         VStack {
-                            HStack {
-                                Text("Odometer Reading")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                TextField("Tap to Set it", value: $totalTravel, format: .number)
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .multilineTextAlignment(.trailing)
-                                    .foregroundColor(Color.blue)
-                                if(totalTravel != nil) {
-                                Text("km")
-                                        .font(.system(size: 14, weight: .bold, design: .default))
-                                        .foregroundColor(Color.blue)
-                                }
-
-                                   
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
-                         
-                            HStack {
-                                Text("Travel Since last fueling")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                Text("123.22 km")
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .foregroundColor(Color.blue)
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
-                            
-                            HStack {
-                                Text("Amount of fuel filled")
-                                    .fontWeight(.semibold)
-                                    .font(.footnote)
-                                Spacer()
-                                Text("20.12 litre")
-                                    .font(.system(size: 14, weight: .bold, design: .default))
-                                    .foregroundColor(Color.blue)
-                            }
-                            .padding(10)
-                            .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
-                            .cornerRadius(10)
+                            SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0)
+                            SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0)
+                            SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0)
                         }
                         .padding(.vertical, 20)
                                                                     
-                        Button {
-                            print("hello")
-                        }
-                    label: {
-                        HStack {
-                            Spacer()
-                            Text("Fueling at the gas station?")
-                                .font(.body)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .frame(width: 300, height: 30, alignment: .center)
-                    }
-                    .background(Color.blue)
-                    .cornerRadius(50)
-                       
+                        AppButton(text: "Filling fuel? Tap it!", color: Color.blue, action: {
+                            addFuel = true
+                        })
+                        AppButton(text: "Update odometer", color: Color.blue, action: {
+                            updateOdometer = true
+                        })
                     }
                     .padding(5)
                      }
@@ -97,55 +48,14 @@ struct ContentView: View {
                     .padding(.leading, 5)
                      Spacer()
                  }
-                 List {
-                     VStack {
-                         HStack {
-                             VStack {
-                                 Text("Travel")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("100.23 km")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                                   
-                                 
-                             }
-                             Spacer()
-                             VStack {
-                                 Text("Fuelling")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("100.00 litre")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                             }
-                             Spacer()
-                             VStack {
-                                 Text("Efficiency")
-                                     .font(.subheadline)
-                                     .fontWeight(.bold)
-                                     .foregroundColor(.gray)
-                                 Text("10.23 kmpl")
-                                     .font(.system(size: 14, weight: .semibold, design: .default))
-                                     .foregroundColor(.blue)
-                             }
-                         }
-                         Spacer()
-                         HStack {
-                             Spacer()
-                             Text(Date(), style: .date)
-                                 .font(.caption2)
-                                 .fontWeight(.light)
-                                 .foregroundColor(.gray)
-                             Spacer()
-                         }
-                     }
-                    
-                 }
+                 FuelEfficiencyListView()
             }
             .frame(alignment: .top)
+            .onAppear(perform: {
+                locationFetcher.start()
+            })
+            .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
+            .sheet(isPresented: $addFuel, content: {AddFuelView()})
             .navigationTitle(Text("Home"))
         }
     }
@@ -157,4 +67,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
+
 
