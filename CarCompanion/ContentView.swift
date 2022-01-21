@@ -14,6 +14,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
     @State var updateOdometer = false
+    @State var addFuel = false
     @ObservedObject var locationFetcher = LocationFetcher()
    
     var body: some View {
@@ -22,47 +23,18 @@ struct ContentView: View {
                 Group {
                     VStack {
                         VStack {
-                            
                             SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0)
                             SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0)
                             SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0)
                         }
                         .padding(.vertical, 20)
                                                                     
-                        Button {
-                            print("hello")
-                        }
-                    label: {
-                        HStack {
-                            Spacer()
-                            Text("Fueling at the gas station?")
-                                .font(.body)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .frame(width: 300, height: 30, alignment: .center)
-                    }
-                    .background(Color.blue)
-                    .cornerRadius(50)
-                        
-                        Button {
+                        AppButton(text: "Filling fuel? Tap it!", color: Color.blue, action: {
+                            addFuel = true
+                        })
+                        AppButton(text: "Update odometer", color: Color.blue, action: {
                             updateOdometer = true
-                        }
-                    label: {
-                        HStack {
-                            Spacer()
-                            Text("Update odometer")
-                                .font(.body)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .frame(width: 300, height: 30, alignment: .center)
-                    }
-                    .background(Color.blue)
-                    .cornerRadius(50)
-                       
+                        })
                     }
                     .padding(5)
                      }
@@ -83,6 +55,7 @@ struct ContentView: View {
                 locationFetcher.start()
             })
             .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
+            .sheet(isPresented: $addFuel, content: {AddFuelView()})
             .navigationTitle(Text("Home"))
         }
     }
@@ -94,6 +67,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 
 
 
