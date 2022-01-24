@@ -2,7 +2,7 @@
 //  CarDashboard+CoreDataProperties.swift
 //  CarCompanion
 //
-//  Created by saj panchal on 2022-01-20.
+//  Created by saj panchal on 2022-01-24.
 //
 //
 
@@ -16,9 +16,10 @@ extension CarDashboard {
         return NSFetchRequest<CarDashboard>(entityName: "CarDashboard")
     }
 
-    @NSManaged public var currentTravel: Double
     @NSManaged public var currentFuel: Double
+    @NSManaged public var currentTravel: Double
     @NSManaged public var odometer: Double
+    @NSManaged public var fuelEfficiency: NSSet?
     
     static func saveContext(viewContext: NSManagedObjectContext) {
         do {
@@ -39,6 +40,23 @@ extension CarDashboard {
         }
         return carDashboard
     }
+
+}
+
+// MARK: Generated accessors for fuelEfficiency
+extension CarDashboard {
+
+    @objc(addFuelEfficiencyObject:)
+    @NSManaged public func addToFuelEfficiency(_ value: FuelEfficiency)
+
+    @objc(removeFuelEfficiencyObject:)
+    @NSManaged public func removeFromFuelEfficiency(_ value: FuelEfficiency)
+
+    @objc(addFuelEfficiency:)
+    @NSManaged public func addToFuelEfficiency(_ values: NSSet)
+
+    @objc(removeFuelEfficiency:)
+    @NSManaged public func removeFromFuelEfficiency(_ values: NSSet)
 
 }
 
