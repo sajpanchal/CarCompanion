@@ -21,6 +21,14 @@ extension CarDashboard {
     @NSManaged public var odometer: Double
     @NSManaged public var fuelEfficiency: NSSet?
     
+    public var fuelEfficiencyArray: [FuelEfficiency] {
+        let set = fuelEfficiency as? Set<FuelEfficiency> ?? []
+        return set.sorted {
+            print("from fuel efficiency property:", $0.timeStamp!)
+           return $0.timeStamp! > $1.timeStamp!
+        }
+    }
+    
     static func saveContext(viewContext: NSManagedObjectContext) {
         do {
             try viewContext.save()

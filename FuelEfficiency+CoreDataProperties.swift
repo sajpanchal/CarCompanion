@@ -21,6 +21,22 @@ extension FuelEfficiency {
     @NSManaged public var timeStamp: Date?
     @NSManaged public var travel: Double
     @NSManaged public var carDashboard: CarDashboard?
+    
+    public var TimeStamp: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .long
+        return dateFormatter.string(from: timeStamp!)
+    }
+    static func saveContext(viewContext: NSManagedObjectContext) {
+        do {
+            try viewContext.save()
+            print("record saved!")
+        }
+        catch {
+            print("Error saving fuelEfficiency context!")
+        }
+    }
 
 }
 

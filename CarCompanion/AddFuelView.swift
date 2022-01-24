@@ -40,18 +40,10 @@ struct AddFuelView: View {
                 .padding(.top, -15)
            
                 AppButton(text: "Add Fuel", color: Color.blue, action: {
-                    if carDashboard.isEmpty {
-                        let newEntry = CarDashboard(context: viewContext)
-                        newEntry.currentFuel = fuelAmount!
-                        newEntry.currentTravel = 0.0
-                        newEntry.odometer = 0.0
+                    if !carDashboard.isEmpty {
+                        updateFuelEfficiency()
                     }
-                    else {
-                        carDashboard.first?.currentFuel = fuelAmount!
-                        carDashboard.first?.currentTravel = 0.0
-                    }
-                    
-                    CarDashboard.saveContext(viewContext: viewContext)
+                    resetCurrentTravel()
                     dismiss()
                     
                 }).disabled(fuelAmount == nil)
@@ -59,10 +51,33 @@ struct AddFuelView: View {
             }
             .navigationTitle("At the Fuel Station")
         }
-        
-       
+    }
+    func updateFuelEfficiency() {
+        print("updaing fuel efficiency")
+       let fuelEfficiency = FuelEfficiency(context: viewContext)
+        fuelEfficiency.fuel = carDashboard.first!.currentFuel
+        fuelEfficiency.travel = carDashboard.first!.currentTravel
+        fuelEfficiency.efficiency = fuelEfficiency.travel/fuelEfficiency.fuel
+        fuelEfficiency.timeStamp = Date()
+        fuelEfficiency.carDashboard = CarDashboard(context: viewContext)
+        fuelEfficiency.carDashboard = carDashboard.first!
+        print("fuel efficiency is:\n fuel:\(fuelEfficiency.fuel), travel: \(fuelEfficiency.travel), efficiency: \(fuelEfficiency.efficiency)")
+        FuelEfficiency.saveContext(viewContext: viewContext)
         
     }
+    func resetCurrentTravel() {
+         if carDashboard.isEmpty {
+             let newEntry = CarDashboard(context: viewContext)
+             newEntry.currentFuel = fuelAmount!
+             newEntry.currentTravel = 0.0
+             newEntry.odometer = 0.0
+         }
+         else {
+             carDashboard.first?.currentFuel = fuelAmount!
+             carDashboard.first?.currentTravel = 0.0
+         }
+         CarDashboard.saveContext(viewContext: viewContext)
+     }
 }
 
 struct AddFuelView_Previews: PreviewProvider {
