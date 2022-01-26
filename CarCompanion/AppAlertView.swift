@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct AppAlertView: View {
-    @State var fuel: String = ""
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @State var fuel: Double?
+    @Binding var showFuel: Bool
     var body: some View {
         VStack {
-            Text("Add Last Fuel Amount")
+            Text("Current fuel is not set!")
                 .font(.title)
             
-            TextField("Enter Current Fuel Amount", text: $fuel)
+            TextField("Enter Current Fuel Amount",value: $fuel, format: .number)
                 .padding(5)
                 .multilineTextAlignment(.center)
           
             HStack {
             
-                AppButton(text: "Add", color: .blue, action: {}, width: 100, height:40)
-                AppButton(text: "Cancel", color: .blue, action: {}, width: 100, height:40)
+                AppButton(text: "Add", color: .blue, action: {
+                    carDashboard.first!.currentFuel = fuel!
+                    CarDashboard.saveContext(viewContext: viewContext)
+                }, width: 100, height:40)
+                    .disabled(fuel == nil)
+                AppButton(text: "Cancel", color: .blue, action: {showFuel = false}, width: 100, height:40)
             }
+            
             .padding(10)
         }
       
@@ -34,6 +42,6 @@ struct AppAlertView: View {
 
 struct AppAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        AppAlertView()
+        AppAlertView(showFuel: .constant(false))
     }
 }
