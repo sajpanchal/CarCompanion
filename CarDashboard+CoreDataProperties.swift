@@ -24,14 +24,14 @@ extension CarDashboard {
     public var fuelEfficiencyArray: [FuelEfficiency] {
         let set = fuelEfficiency as? Set<FuelEfficiency> ?? []
         return set.sorted {
-            print("from fuel efficiency property:", $0.timeStamp!)
-           return $0.timeStamp! > $1.timeStamp!
+            $0.timeStamp! > $1.timeStamp!
         }
     }
     
     static func saveContext(viewContext: NSManagedObjectContext) {
         do {
             try viewContext.save()
+          //  print("car dashboard updated!")
         }
         catch {
             print("save failed")
@@ -40,8 +40,7 @@ extension CarDashboard {
     static func fetchData(viewContext: NSManagedObjectContext) -> CarDashboard?{
         var carDashboard: CarDashboard?
         do {
-            carDashboard = try viewContext.fetch(Self.fetchRequest()).first
-            print("fetch successful")
+            carDashboard = try viewContext.fetch(Self.fetchRequest()).first          
         }
         catch {
             print("couldn't fetch it.")

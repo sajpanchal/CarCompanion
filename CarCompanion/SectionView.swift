@@ -9,27 +9,23 @@ import SwiftUI
 
 struct SectionView: View {
     var title: String
-    var value: Double
-   
-    
+    var value: Double       
     var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         return formatter
     }()
+    
     var body: some View {
         HStack {
             Text(title)
                 .fontWeight(.semibold)
                 .font(.footnote)
             Spacer()
-           
-            
-                Text("\(value, specifier: "%.2f")")
+            Text("\(value, specifier: "%.2f")")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
-            
             if(title == "Amount of fuel filled") {
                 Text("litre")
                     .font(.system(size: 14, weight: .bold, design: .default))
@@ -40,13 +36,11 @@ struct SectionView: View {
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
             }
-            else if(title == "Travel Since last fueling") {
+            else if (title == "Travel Since last fueling") {
                 Text("km")
                     .font(.system(size: 14, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
-            }
-            
-            
+            }                        
         }
         .padding(10)
         .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))

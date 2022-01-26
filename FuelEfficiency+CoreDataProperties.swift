@@ -31,7 +31,7 @@ extension FuelEfficiency {
     static func saveContext(viewContext: NSManagedObjectContext) {
         do {
             try viewContext.save()
-            print("record saved!")
+            print("fuel efficiency updated!")
         }
         catch {
             print("Error saving fuelEfficiency context!")

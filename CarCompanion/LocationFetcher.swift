@@ -14,6 +14,7 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
     @Published  var lastLocation: CLLocation?
     @Published var distance: Double = 0.0
     @Published var speed: CLLocationSpeed?
+   
     var manager = CLLocationManager()
     var viewContext = PersistenceController.shared.container.viewContext
     var carDashboard: CarDashboard?
@@ -46,23 +47,25 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func start() {
+        carDashboard = CarDashboard.fetchData(viewContext: viewContext)
         manager.startUpdatingLocation()
-                
     }
     
     func stop() {
         manager.stopUpdatingLocation()
+        print("location updated stopped")
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = lastLocation ?? locations.last
         lastLocation = locations.last
         
         let difference = lastLocation?.distance(from: currentLocation!)
-        carDashboard?.currentTravel += abs(Double(difference!)/1000)
-        carDashboard?.odometer += abs(Double(difference!)/1000)
-        CarDashboard.saveContext(viewContext: viewContext)
-        
+        self.carDashboard!.currentTravel += abs(Double(difference!)/1000)
+        self.carDashboard!.odometer += abs(Double(difference!)/1000)
+      
+        CarDashboard.saveContext(viewContext: self.viewContext)                       
         speed = Double(lastLocation!.speed)/3.6
     }
 }

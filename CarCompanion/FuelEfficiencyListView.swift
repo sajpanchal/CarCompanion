@@ -10,7 +10,7 @@ import SwiftUI
 struct FuelEfficiencyListView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
-    @FetchRequest(entity: FuelEfficiency.entity(), sortDescriptors: []) var fuelEfficiencies: FetchedResults<FuelEfficiency>
+    
     var body: some View {
         List {
                         
@@ -65,21 +65,9 @@ struct FuelEfficiencyListView: View {
                     }
                 }
             }
-            
-        }
-        .onAppear(perform: {
-            print("on Appear method from list")
-            print(carDashboard.first!.fuelEfficiencyArray)
-            for entry in fuelEfficiencies{
-              
-                print("fuel:", entry.fuel)
-                print("travel:", entry.travel)
-                print("efficiency:", entry.efficiency)
-            }
-        })
+        }        
     }
 }
-
 
 struct FuelEfficiencyListView_Previews: PreviewProvider {
     static var previews: some View {
