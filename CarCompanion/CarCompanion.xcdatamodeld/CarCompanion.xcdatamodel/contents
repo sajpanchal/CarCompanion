@@ -4,8 +4,17 @@
         <attribute name="currentFuel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="currentTravel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="odometer" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="fuelEfficiency" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FuelEfficiency" inverseName="carDashboard" inverseEntity="FuelEfficiency"/>
+    </entity>
+    <entity name="FuelEfficiency" representedClassName="FuelEfficiency" syncable="YES">
+        <attribute name="efficiency" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="fuel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="travel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="carDashboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarDashboard" inverseName="fuelEfficiency" inverseEntity="CarDashboard"/>
     </entity>
     <elements>
-        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="FuelEfficiency" positionX="-63" positionY="9" width="128" height="104"/>
     </elements>
 </model>

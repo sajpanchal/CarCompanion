@@ -23,9 +23,9 @@ struct ContentView: View {
                 Group {
                     VStack {
                         VStack {
-                            SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0)
-                            SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0)
-                            SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0)
+                            SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0 )
+                            SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0 )
+                            SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0 )
                         }
                         .padding(.vertical, 20)
                                                                     

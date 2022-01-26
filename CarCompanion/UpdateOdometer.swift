@@ -11,7 +11,6 @@ import CoreData
 struct UpdateOdometer: View {
     @State var value: Double?
     @Environment(\.dismiss) var dismiss
-    
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
     var body: some View {

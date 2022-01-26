@@ -39,8 +39,9 @@ struct PersistenceController {
         container = NSPersistentCloudKitContainer(name: "CarCompanion")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy           
         }
-        
+      
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
