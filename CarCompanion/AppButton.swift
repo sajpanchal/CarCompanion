@@ -11,6 +11,8 @@ struct AppButton: View {
     var text: String
     var color: Color
     var action: () -> ()
+    var width: CGFloat
+    var height: CGFloat
     var body: some View {
         Button {
             action()
@@ -24,7 +26,7 @@ struct AppButton: View {
                 .foregroundColor(.white)
             Spacer()
         }
-        .frame(width: 300, height: 40, alignment: .center)
+        .frame(width: width, height: height, alignment: .center)
     }
     .background(color)
     .cornerRadius(50)
@@ -35,6 +37,6 @@ struct AppButton: View {
 
 struct AppButton_Previews: PreviewProvider {
     static var previews: some View {
-        AppButton(text: "", color: .clear, action: {})
+        AppButton(text: "", color: .clear, action: {}, width: 0, height: 0)
     }
 }

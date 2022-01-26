@@ -35,7 +35,7 @@ struct UpdateOdometer: View {
                 .padding(.horizontal, 10)
                 .padding(.bottom, 10)
                 .padding(.top, -15)
-                AppButton(text: "Set App Odometer", color: Color.blue) {
+                AppButton(text: "Set App Odometer", color: Color.blue, action: {
                     if !carDashboard.isEmpty {
                         carDashboard.first?.odometer = value!
                     }
@@ -47,7 +47,7 @@ struct UpdateOdometer: View {
                     }
                     CarDashboard.saveContext(viewContext: viewContext)
                     dismiss()
-                }
+                }, width: 300, height: 40)
                Spacer()
             }
             
