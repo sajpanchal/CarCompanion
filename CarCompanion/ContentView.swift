@@ -73,10 +73,10 @@ struct ContentView: View {
                 .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
                 .sheet(isPresented: $addFuel, content: {AddFuelView()})
             .navigationTitle(Text("Home"))
-               // if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
+                if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
                 AppAlertView(showFuel: $showFuelAlert)
                     .frame(width: 270, height: 200, alignment: .center)
-             //   }
+                }
             }
         }
     }
