@@ -62,10 +62,13 @@ struct FuelEfficiencyListView: View {
                                 .foregroundColor(.gray)
                             Spacer()
                         }
-                    }
+                    }      
                 }
+               
             }
-        }        
+          
+        }
+        
     }
 }
 

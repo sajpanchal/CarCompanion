@@ -23,15 +23,17 @@ struct ContentView: View {
         NavigationView {
             
             ZStack {
+               
                 VStack {
                     Group {
                         VStack {
-                            VStack {
-                                SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0 )
-                                SectionView(title: "Travel Since last fueling", value: carDashboard.first?.currentTravel ?? 0.0 )
-                                SectionView(title: "Amount of fuel filled", value: carDashboard.first?.currentFuel ?? 0.0 )
+                            SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0, color: .pink )
+                            
+                            HStack {
+                                SectionView(title: "Current Cycle Travel", value: carDashboard.first?.currentTravel ?? 0.0, color: .green )
+                                SectionView(title: "Current Cycle Fuel", value: carDashboard.first?.currentFuel ?? 0.0, color: .orange )
                             }
-                            .padding(.vertical, 20)
+                            .padding(.top, 5)
                                                                         
                             AppButton(text: "Filling fuel? Tap it!", color: Color.blue, action: {
                                 addFuel = true
@@ -71,10 +73,10 @@ struct ContentView: View {
                 .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
                 .sheet(isPresented: $addFuel, content: {AddFuelView()})
             .navigationTitle(Text("Home"))
-                if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
+               // if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
                 AppAlertView(showFuel: $showFuelAlert)
-                    .frame(width: 200, height: 200, alignment: .center)
-                }
+                    .frame(width: 270, height: 200, alignment: .center)
+             //   }
             }
         }
     }
