@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SectionView: View {
     var title: String
-    var value: Double       
+    var value: Double
+    var color: Color
     var formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -19,31 +20,35 @@ struct SectionView: View {
     
     var body: some View {
         HStack {
-            Text(title)
-                .fontWeight(.semibold)
-                .font(.footnote)
             Spacer()
-            Text("\(value, specifier: "%.2f")")
-                    .font(.system(size: 14, weight: .bold, design: .default))
-                    .foregroundColor(Color.blue)
-            if(title == "Amount of fuel filled") {
-                Text("litre")
-                    .font(.system(size: 14, weight: .bold, design: .default))
-                    .foregroundColor(Color.blue)
+            VStack {
+                Text(title)
+                    .font(.system(size: 12, weight: .black, design: .default))
+                    .foregroundColor(.black)
+                Spacer()
+                Text("\(value, specifier: "%.2f")")
+                        .font(.system(size: 20, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+                if(title == "Current Cycle Fuel") {
+                    Text("litre")
+                        .font(.system(size: 14, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+                }
+                else if (title == "Odometer Reading") {
+                    Text("km")
+                        .font(.system(size: 14, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+                }
+                else if (title == "Current Cycle Travel") {
+                    Text("km")
+                        .font(.system(size: 14, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+                }
             }
-            else if (title == "Odometer Reading") {
-                Text("km")
-                    .font(.system(size: 14, weight: .bold, design: .default))
-                    .foregroundColor(Color.blue)
-            }
-            else if (title == "Travel Since last fueling") {
-                Text("km")
-                    .font(.system(size: 14, weight: .bold, design: .default))
-                    .foregroundColor(Color.blue)
-            }                        
+            Spacer()
         }
-        .padding(10)
-        .background(Color(red: 0.75, green: 0.75, blue: 0.75, opacity: 1))
+        .padding(5)
+        .background(color)
         .cornerRadius(10)
     }
 }
@@ -51,6 +56,6 @@ struct SectionView: View {
 
 struct SectionView_Previews: PreviewProvider {
     static var previews: some View {
-        SectionView(title: "", value: 0.0)
+        SectionView(title: "", value: 0.0, color: .gray)
     }
 }

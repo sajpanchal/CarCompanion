@@ -56,7 +56,7 @@ struct AddFuelView: View {
                    
                     dismiss()
                     
-                }).disabled(fuelAmount == nil)
+                }, width: 300, height: 40).disabled(fuelAmount == nil)
                 Spacer()
             }
             .onAppear(perform: {

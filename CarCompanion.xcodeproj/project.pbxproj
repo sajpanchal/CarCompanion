@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		720361E22799D806008F4832 /* UpdateOdometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720361E12799D806008F4832 /* UpdateOdometer.swift */; };
+		720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B4A8A27A1BD32009667DB /* AppAlertView.swift */; };
 		7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2C279B0E3F007BCDC2 /* AppButton.swift */; };
 		7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */; };
 		72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		720361E12799D806008F4832 /* UpdateOdometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOdometer.swift; sourceTree = "<group>"; };
+		720B4A8A27A1BD32009667DB /* AppAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertView.swift; sourceTree = "<group>"; };
 		7215AF2C279B0E3F007BCDC2 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelView.swift; sourceTree = "<group>"; };
 		7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyListView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */,
 				72219EE02789FE3D00FD53DB /* ContentView.swift */,
 				7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */,
+				720B4A8A27A1BD32009667DB /* AppAlertView.swift */,
 				7215AF2C279B0E3F007BCDC2 /* AppButton.swift */,
 				720361E12799D806008F4832 /* UpdateOdometer.swift */,
 				72219383279719BB00F121B3 /* LocationFetcher.swift */,
@@ -301,6 +304,7 @@
 				7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */,
 				722193822797194900F121B3 /* SectionView.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
+				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
 				724F197E279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift in Sources */,
 				724F197C279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
