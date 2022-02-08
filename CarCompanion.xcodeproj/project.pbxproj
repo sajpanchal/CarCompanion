@@ -29,6 +29,7 @@
 		724F197F279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F197B279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift */; };
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
+		725F5AF627B2F1FB00E2E96A /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF527B2F1FB00E2E96A /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		724F197B279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		725F5AF527B2F1FB00E2E96A /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */,
 				725F5AF127B2C79C00E2E96A /* SettingsView.swift */,
 				725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */,
+				725F5AF527B2F1FB00E2E96A /* TitleView.swift */,
 				72219EE02789FE3D00FD53DB /* ContentView.swift */,
 				7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */,
 				720B4A8A27A1BD32009667DB /* AppAlertView.swift */,
@@ -309,6 +312,7 @@
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
 				7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */,
 				722193822797194900F121B3 /* SectionView.swift in Sources */,
+				725F5AF627B2F1FB00E2E96A /* TitleView.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,

@@ -26,8 +26,9 @@ struct AppButton: View {
                 .foregroundColor(.white)
             Spacer()
         }
-        .frame(width: width, height: height, alignment: .center)
+     
     }
+    .frame(height: height, alignment: .center)
     .background(color)
     .cornerRadius(50)
     }

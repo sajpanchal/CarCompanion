@@ -18,6 +18,7 @@ struct HomeScreenView: View {
         VStack {
             Group {
                 VStack {
+                    TitleView(title: "DASHBOARD SUMMARY")
                     SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0, color: .pink )
                     
                     HStack {
@@ -36,21 +37,9 @@ struct HomeScreenView: View {
                 .padding(5)
             }
             Spacer()
-            HStack {
-                Text("FUEL EFFICIENCY HISTORY")
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color.gray)
-                    .frame(height: 40, alignment: .leading)
-                    .padding(.leading, 5)
-                
-                Spacer()
-            }
-            
+            TitleView(title: "FUEL EFFICIENCY HISTORY")                        
             FuelEfficiencyListView()
-            
         }
-       
     }
 }
     
@@ -60,3 +49,4 @@ struct HomeScreenView_Previews: PreviewProvider {
         HomeScreenView(updateOdometer: .constant(false), addFuel: .constant(false), showFuelAlert: .constant(false))
     }
 }
+

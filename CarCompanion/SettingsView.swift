@@ -17,6 +17,7 @@ struct SettingsView: View {
     @State var owner: String
     @State var licensePlate: String
     @State var driverLicense: String
+    
     var latestYear = { () -> Int in
         let date = Date()
         let calender = Calendar.current
@@ -27,25 +28,15 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-        
             VStack {
                 Spacer()
-                
                 Form {
-                    
-                    
                     Group {
-                        VStack {
-                            Text("CAR DETAILS")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
-                            
-                        }
-                        .padding(.top, 20)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
-                      
+                       
+                        TitleView(title: "CAR DETAILS")
+                            .padding(.top, 20)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets())
                         Section("Make") {
                             TextField("What brand is this car?", text: $make)
                         }
@@ -54,7 +45,7 @@ struct SettingsView: View {
                         }
                         Section("Year") {
                             Picker("What year is your car make?", selection: $year) {
-                                ForEach(1900...latestYear, id: \.self) {
+                                ForEach((1900...latestYear).reversed(), id: \.self) {
                                     Text(String($0))
                                 }
                             }
@@ -65,20 +56,16 @@ struct SettingsView: View {
                         Section("ODOMETER (in KM)") {
                             TextField("What is your car odometer reading status?", value: $odometer, format: .number)
                         }
-                        Section("Fuel Capacity") {
+                        Section("Fuel Capacity (in Litre") {
                             TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number)
                         }
                     }
+                    
                     Group {
-                        VStack {
-                            Text("PERSONAL DETAILS")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.top, 15)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
+                        TitleView(title: "DRIVER DETAILS")
+                            .padding(.top, 15)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets())
                         Section("Owner's Full Name") {
                             TextField("Who is the car Owner?", text: $owner)
                         }
@@ -87,31 +74,12 @@ struct SettingsView: View {
                         }
                     }
                     VStack {
-                        Button {
-                            print("save")
-                        } label: {
-                            HStack {
-                                Spacer()
-                                Text("Save")
-                                Spacer()
-                            }
-                            .frame(height: 40, alignment: .center)
-                            
-                        }
-                        .background(.gray)
-                        .cornerRadius(100)
-                        .padding(.bottom, 10)
+                        AppButton(text: "Save", color: .blue, action: {print("save")}, width: 300, height: 40)
                     }
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
-                    
-                   
-                        
-                    
-                    
                 }
             }
-           
             .navigationTitle("Settings")
         }
     }
