@@ -95,7 +95,7 @@ struct SettingsView: View {
                                 Text("Save")
                                 Spacer()
                             }
-                            .frame(height: 30, alignment: .center)
+                            .frame(height: 40, alignment: .center)
                             
                         }
                         .background(.gray)
