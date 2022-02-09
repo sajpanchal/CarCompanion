@@ -11,6 +11,8 @@
 		720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B4A8A27A1BD32009667DB /* AppAlertView.swift */; };
 		7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2C279B0E3F007BCDC2 /* AppButton.swift */; };
 		7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */; };
+		721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841CE27B41559002FFAF4 /* CarDetailsView.swift */; };
+		721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D027B415F4002FFAF4 /* DriverDetailsView.swift */; };
 		72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */; };
 		722193822797194900F121B3 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722193812797194900F121B3 /* SectionView.swift */; };
 		72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219383279719BB00F121B3 /* LocationFetcher.swift */; };
@@ -54,6 +56,8 @@
 		720B4A8A27A1BD32009667DB /* AppAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertView.swift; sourceTree = "<group>"; };
 		7215AF2C279B0E3F007BCDC2 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelView.swift; sourceTree = "<group>"; };
+		721841CE27B41559002FFAF4 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
+		721841D027B415F4002FFAF4 /* DriverDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsView.swift; sourceTree = "<group>"; };
 		7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyListView.swift; sourceTree = "<group>"; };
 		722193812797194900F121B3 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		72219383279719BB00F121B3 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				7221938527971C5D00F121B3 /* Info.plist */,
 				72219EDE2789FE3D00FD53DB /* CarCompanionApp.swift */,
 				725F5AF127B2C79C00E2E96A /* SettingsView.swift */,
+				721841D027B415F4002FFAF4 /* DriverDetailsView.swift */,
+				721841CE27B41559002FFAF4 /* CarDetailsView.swift */,
 				725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */,
 				725F5AF527B2F1FB00E2E96A /* TitleView.swift */,
 				72219EE02789FE3D00FD53DB /* ContentView.swift */,
@@ -310,7 +316,9 @@
 				7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */,
 				72219EE82789FE3F00FD53DB /* Persistence.swift in Sources */,
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
+				721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */,
 				7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */,
+				721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */,
 				722193822797194900F121B3 /* SectionView.swift in Sources */,
 				725F5AF627B2F1FB00E2E96A /* TitleView.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
