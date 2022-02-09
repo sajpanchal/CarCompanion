@@ -19,11 +19,11 @@ struct HomeScreenView: View {
             Group {
                 VStack {
                     TitleView(title: "DASHBOARD SUMMARY")
-                    SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0, color: .pink )
+                    SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0, color: .pink)
                     
                     HStack {
-                        SectionView(title: "Current Cycle Travel", value: carDashboard.first?.currentTravel ?? 0.0, color: .green )
-                        SectionView(title: "Current Cycle Fuel", value: carDashboard.first?.currentFuel ?? 0.0, color: .orange )
+                        SectionView(title: "Current Cycle Travel", value: carDashboard.first?.currentTravel ?? 0.0, color: .green)
+                        SectionView(title: "Current Cycle Fuel", value: carDashboard.first?.currentFuel ?? 0.0, color: .orange)
                     }
                     .padding(.top, 5)
                     

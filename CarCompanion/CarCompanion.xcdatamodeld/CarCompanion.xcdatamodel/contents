@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Car" representedClassName="Car" syncable="YES">
+        <attribute name="fuelCapacity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="make" optional="YES" attributeType="String"/>
+        <attribute name="model" optional="YES" attributeType="String"/>
+        <attribute name="plateNumber" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="dashboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarDashboard" inverseName="car" inverseEntity="CarDashboard"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="car" inverseEntity="Driver"/>
+    </entity>
     <entity name="CarDashboard" representedClassName="CarDashboard" syncable="YES">
         <attribute name="currentFuel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="currentTravel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="odometer" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="dashboard" inverseEntity="Car"/>
         <relationship name="fuelEfficiency" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FuelEfficiency" inverseName="carDashboard" inverseEntity="FuelEfficiency"/>
+    </entity>
+    <entity name="Driver" representedClassName="Driver" syncable="YES">
+        <attribute name="licenseNumber" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="car" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Car" inverseName="driver" inverseEntity="Car"/>
     </entity>
     <entity name="FuelEfficiency" representedClassName="FuelEfficiency" syncable="YES">
         <attribute name="efficiency" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -14,7 +29,9 @@
         <relationship name="carDashboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarDashboard" inverseName="fuelEfficiency" inverseEntity="CarDashboard"/>
     </entity>
     <elements>
-        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="FuelEfficiency" positionX="-63" positionY="9" width="128" height="104"/>
+        <element name="Car" positionX="-54" positionY="45" width="128" height="134"/>
+        <element name="Driver" positionX="-45" positionY="54" width="128" height="74"/>
     </elements>
 </model>

@@ -50,7 +50,7 @@ struct ContentView: View {
                 Text("Home")
             }
             .tag(0)
-            SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, owner: "", licensePlate: "", driverLicense: "")
+            SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
                 .tabItem {
                     Image(systemName: "gearshape.2.fill")
                     Text("Settings")
@@ -70,3 +70,103 @@ struct ContentView_Previews: PreviewProvider {
 
 
 
+/*
+ extension FuelEfficiency {
+
+     @nonobjc public class func fetchRequest() -> NSFetchRequest<FuelEfficiency> {
+         return NSFetchRequest<FuelEfficiency>(entityName: "FuelEfficiency")
+     }
+
+     @NSManaged public var efficiency: Double
+     @NSManaged public var fuel: Double
+     @NSManaged public var timeStamp: Date?
+     @NSManaged public var travel: Double
+     @NSManaged public var carDashboard: CarDashboard?
+     
+     public var TimeStamp: String {
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateStyle = .medium
+         dateFormatter.timeStyle = .long
+         return dateFormatter.string(from: timeStamp!)
+     }
+     static func saveContext(viewContext: NSManagedObjectContext) {
+         do {
+             try viewContext.save()
+             print("fuel efficiency updated!")
+         }
+         catch {
+             print("Error saving fuelEfficiency context!")
+         }
+     }
+
+ }
+
+ extension FuelEfficiency : Identifiable {
+
+ }
+
+ */
+
+/*
+ extension CarDashboard {
+
+     @nonobjc public class func fetchRequest() -> NSFetchRequest<CarDashboard> {
+         return NSFetchRequest<CarDashboard>(entityName: "CarDashboard")
+     }
+
+     @NSManaged public var currentFuel: Double
+     @NSManaged public var currentTravel: Double
+     @NSManaged public var odometer: Double
+     @NSManaged public var fuelEfficiency: NSSet?
+     
+     public var fuelEfficiencyArray: [FuelEfficiency] {
+         let set = fuelEfficiency as? Set<FuelEfficiency> ?? []
+         return set.sorted {
+             $0.timeStamp! > $1.timeStamp!
+         }
+     }
+     
+     static func saveContext(viewContext: NSManagedObjectContext) {
+         do {
+             try viewContext.save()
+           //  print("car dashboard updated!")
+         }
+         catch {
+             print("save failed")
+         }
+     }
+     static func fetchData(viewContext: NSManagedObjectContext) -> CarDashboard?{
+         var carDashboard: CarDashboard?
+         do {
+             carDashboard = try viewContext.fetch(Self.fetchRequest()).first
+         }
+         catch {
+             print("couldn't fetch it.")
+         }
+         return carDashboard
+     }
+
+ }
+
+ // MARK: Generated accessors for fuelEfficiency
+ extension CarDashboard {
+
+     @objc(addFuelEfficiencyObject:)
+     @NSManaged public func addToFuelEfficiency(_ value: FuelEfficiency)
+
+     @objc(removeFuelEfficiencyObject:)
+     @NSManaged public func removeFromFuelEfficiency(_ value: FuelEfficiency)
+
+     @objc(addFuelEfficiency:)
+     @NSManaged public func addToFuelEfficiency(_ values: NSSet)
+
+     @objc(removeFuelEfficiency:)
+     @NSManaged public func removeFromFuelEfficiency(_ values: NSSet)
+
+ }
+
+ extension CarDashboard : Identifiable {
+
+ }
+
+ */

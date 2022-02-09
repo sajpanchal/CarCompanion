@@ -13,6 +13,14 @@
 		7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */; };
 		721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841CE27B41559002FFAF4 /* CarDetailsView.swift */; };
 		721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D027B415F4002FFAF4 /* DriverDetailsView.swift */; };
+		721841DA27B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */; };
+		721841DB27B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */; };
+		721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */; };
+		721841DD27B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */; };
+		721841DE27B41F9A002FFAF4 /* Driver+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */; };
+		721841DF27B41F9A002FFAF4 /* Driver+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D727B41F9A002FFAF4 /* Driver+CoreDataProperties.swift */; };
+		721841E027B41F9A002FFAF4 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D827B41F9A002FFAF4 /* Car+CoreDataClass.swift */; };
+		721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D927B41F9A002FFAF4 /* Car+CoreDataProperties.swift */; };
 		72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */; };
 		722193822797194900F121B3 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722193812797194900F121B3 /* SectionView.swift */; };
 		72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219383279719BB00F121B3 /* LocationFetcher.swift */; };
@@ -25,10 +33,6 @@
 		72219EF52789FE3F00FD53DB /* CarCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EF42789FE3F00FD53DB /* CarCompanionTests.swift */; };
 		72219EFF2789FE3F00FD53DB /* CarCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EFE2789FE3F00FD53DB /* CarCompanionUITests.swift */; };
 		72219F012789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */; };
-		724F197C279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F1978279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift */; };
-		724F197D279F04DC00F8DBFF /* FuelEfficiency+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F1979279F04DC00F8DBFF /* FuelEfficiency+CoreDataProperties.swift */; };
-		724F197E279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F197A279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift */; };
-		724F197F279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F197B279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift */; };
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
 		725F5AF627B2F1FB00E2E96A /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF527B2F1FB00E2E96A /* TitleView.swift */; };
@@ -58,6 +62,14 @@
 		7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelView.swift; sourceTree = "<group>"; };
 		721841CE27B41559002FFAF4 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
 		721841D027B415F4002FFAF4 /* DriverDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsView.swift; sourceTree = "<group>"; };
+		721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataClass.swift"; sourceTree = "<group>"; };
+		721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataClass.swift"; sourceTree = "<group>"; };
+		721841D727B41F9A002FFAF4 /* Driver+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		721841D827B41F9A002FFAF4 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
+		721841D927B41F9A002FFAF4 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyListView.swift; sourceTree = "<group>"; };
 		722193812797194900F121B3 /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		72219383279719BB00F121B3 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
@@ -74,10 +86,6 @@
 		72219EFA2789FE3F00FD53DB /* CarCompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarCompanionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72219EFE2789FE3F00FD53DB /* CarCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionUITests.swift; sourceTree = "<group>"; };
 		72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		724F1978279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataClass.swift"; sourceTree = "<group>"; };
-		724F1979279F04DC00F8DBFF /* FuelEfficiency+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		724F197A279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataClass.swift"; sourceTree = "<group>"; };
-		724F197B279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		725F5AF527B2F1FB00E2E96A /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -111,10 +119,14 @@
 		72219ED22789FE3D00FD53DB = {
 			isa = PBXGroup;
 			children = (
-				724F1978279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift */,
-				724F1979279F04DC00F8DBFF /* FuelEfficiency+CoreDataProperties.swift */,
-				724F197A279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift */,
-				724F197B279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift */,
+				721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */,
+				721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */,
+				721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */,
+				721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */,
+				721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */,
+				721841D727B41F9A002FFAF4 /* Driver+CoreDataProperties.swift */,
+				721841D827B41F9A002FFAF4 /* Car+CoreDataClass.swift */,
+				721841D927B41F9A002FFAF4 /* Car+CoreDataProperties.swift */,
 				72219EDD2789FE3D00FD53DB /* CarCompanion */,
 				72219EF32789FE3F00FD53DB /* CarCompanionTests */,
 				72219EFD2789FE3F00FD53DB /* CarCompanionUITests */,
@@ -317,21 +329,25 @@
 				72219EE82789FE3F00FD53DB /* Persistence.swift in Sources */,
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
 				721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */,
+				721841DA27B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift in Sources */,
 				7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */,
+				721841DD27B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift in Sources */,
+				721841DF27B41F9A002FFAF4 /* Driver+CoreDataProperties.swift in Sources */,
+				721841DE27B41F9A002FFAF4 /* Driver+CoreDataClass.swift in Sources */,
 				721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */,
 				722193822797194900F121B3 /* SectionView.swift in Sources */,
 				725F5AF627B2F1FB00E2E96A /* TitleView.swift in Sources */,
+				721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
+				721841DB27B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift in Sources */,
+				721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */,
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,
-				724F197E279F04DC00F8DBFF /* CarDashboard+CoreDataClass.swift in Sources */,
-				724F197C279F04DC00F8DBFF /* FuelEfficiency+CoreDataClass.swift in Sources */,
 				725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
 				72219EEB2789FE3F00FD53DB /* CarCompanion.xcdatamodeld in Sources */,
+				721841E027B41F9A002FFAF4 /* Car+CoreDataClass.swift in Sources */,
 				72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */,
-				724F197F279F04DC00F8DBFF /* CarDashboard+CoreDataProperties.swift in Sources */,
-				724F197D279F04DC00F8DBFF /* FuelEfficiency+CoreDataProperties.swift in Sources */,
 				720361E22799D806008F4832 /* UpdateOdometer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
