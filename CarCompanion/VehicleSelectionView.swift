@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct VehicleSelectionView: View {
-    var vehicles: [String] = ["Honda Civic", "Toyota Corrolla", "Nissan Ultima"]
-    @State var vehicle: String = "Honda Civic"
+    @Binding var vehicles: [String]
+    @Binding var vehicle: Int
     var body: some View {
         
         Group {
             TitleView(title: "SELECTED VEHICLE")
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
-            Picker("Select your current vehicle", selection: $vehicle) {
+            Picker("Select your current vehicle", selection: $vehicles[vehicle]) {
                 ForEach(vehicles, id: \.self) {
                     Text($0)
                 }
@@ -27,6 +27,6 @@ struct VehicleSelectionView: View {
 
 struct VehicleSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        VehicleSelectionView()
+        VehicleSelectionView(vehicles: .constant([]), vehicle: .constant(0))
     }
 }

@@ -10,6 +10,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @State var vehicles: [String] = ["Honda Civic", "Toyota Corolla", "Nissan Ultima"]
+    @State var vehicle: Int = 0
+    
     @State var make: String
     @State var model: String
     @State var year: Int
@@ -19,6 +22,7 @@ struct SettingsView: View {
         
     @State var owner: String
     @State var driverLicense: String
+    
 
             
     var body: some View {
@@ -26,7 +30,7 @@ struct SettingsView: View {
             VStack {
                 Spacer()
                 Form {
-                    VehicleSelectionView()
+                    VehicleSelectionView(vehicles: $vehicles, vehicle: $vehicle)
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
                     
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)

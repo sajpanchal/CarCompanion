@@ -12,7 +12,7 @@ import CoreData
 struct ContentView: View {
 
     @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @Environment(\.scenePhase) var scenePhase
     
     @State var updateOdometer = false
@@ -22,40 +22,47 @@ struct ContentView: View {
     @ObservedObject var locationFetcher = LocationFetcher()
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            NavigationView {
-                HomeScreenView(updateOdometer: $updateOdometer, addFuel: $addFuel, showFuelAlert: $showFuelAlert)
-                    .frame(alignment: .top)
-                    .onAppear(perform: {
-                        print("on appear")
-                        locationFetcher.start()
-                        showFuelAlert = carDashboard.first!.currentFuel == 0.0  ? true  : false
-                    })
-                    .onChange(of: scenePhase) { newPhase in
-                        if newPhase == .active {
-                            showFuelAlert = true
-                        }
-                    }
-                    .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
-                    .sheet(isPresented: $addFuel, content: {AddFuelView()})
-                    .navigationTitle(Text("Home"))
-                    if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
-                    AppAlertView(showFuel: $showFuelAlert)
-                        .frame(width: 270, height: 200, alignment: .center)
-                    }
-                    
-            }
-            .tabItem {
-                Image(systemName:"house")
-                Text("Home")
-            }
-            .tag(0)
+        if driver.isEmpty {
             SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
-                .tabItem {
-                    Image(systemName: "gearshape.2.fill")
-                    Text("Settings")
+        }
+        
+        else {
+            TabView(selection: $selectedTab) {
+                NavigationView {
+                    HomeScreenView(updateOdometer: $updateOdometer, addFuel: $addFuel, showFuelAlert: $showFuelAlert)
+                        .frame(alignment: .top)
+                        .onAppear(perform: {
+                            print("on appear")
+                            locationFetcher.start()
+                            /*showFuelAlert = carDashboard.first!.currentFuel == 0.0  ? true  : false*/
+                        })
+                        .onChange(of: scenePhase) { newPhase in
+                            if newPhase == .active {
+                                showFuelAlert = true
+                            }
+                        }
+                        .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
+                        .sheet(isPresented: $addFuel, content: {AddFuelView()})
+                        .navigationTitle(Text("Home"))
+                       /* if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
+                        AppAlertView(showFuel: $showFuelAlert)
+                            .frame(width: 270, height: 200, alignment: .center)
+                        }*/
+                        
                 }
-                .tag(1)
+                .tabItem {
+                    Image(systemName:"house")
+                    Text("Home")
+                }
+                .tag(0)
+                SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
+                    .tabItem {
+                        Image(systemName: "gearshape.2.fill")
+                        Text("Settings")
+                    }
+                    .tag(1)
+            }
+                    
         }
         }
     }
