@@ -20,7 +20,7 @@ struct ContentView: View {
     @State var showFuelAlert = true
     @State var selectedTab = 0
     @ObservedObject var locationFetcher = LocationFetcher()
-    
+
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationView {

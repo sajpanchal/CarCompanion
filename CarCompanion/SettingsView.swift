@@ -26,17 +26,30 @@ struct SettingsView: View {
             VStack {
                 Spacer()
                 Form {
+                    VehicleSelectionView()
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
                     
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)
                     
                     VStack {
-                        AppButton(text: "Save", color: .blue, action: {print("save")}, width: 300, height: 40)
+                        AppButton(text: "Save", color: .blue, action: {
+                            print("save")
+                            
+                        }, width: 300, height: 40)
                     }
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
             }
+            .toolbar(content: {
+                Button("ADD NEW VEHICLE") {
+                    
+                }
+                .padding(5)
+                .foregroundColor(.white)
+                .background(.blue)
+                .cornerRadius(20)
+            })
             .navigationTitle("Settings")
         }
     }
