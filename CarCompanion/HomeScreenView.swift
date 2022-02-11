@@ -18,7 +18,7 @@ struct HomeScreenView: View {
         VStack {
             Group {
                 VStack {
-                    TitleView(title: "DASHBOARD SUMMARY")
+                    AppTitleView(title: "DASHBOARD SUMMARY")
                     SectionView(title: "Odometer Reading", value: carDashboard.first?.odometer ?? 0.0, color: .pink)
                     
                     HStack {
@@ -37,7 +37,7 @@ struct HomeScreenView: View {
                 .padding(5)
             }
             Spacer()
-            TitleView(title: "FUEL EFFICIENCY HISTORY")                        
+            AppTitleView(title: "FUEL EFFICIENCY HISTORY")
             FuelEfficiencyListView()
         }
     }

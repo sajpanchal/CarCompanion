@@ -13,7 +13,7 @@ struct VehicleSelectionView: View {
     var body: some View {
         
         Group {
-            TitleView(title: "SELECTED VEHICLE")
+            AppTitleView(title: "SELECTED VEHICLE")
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             Picker("Select your current vehicle", selection: $vehicles[vehicle]) {

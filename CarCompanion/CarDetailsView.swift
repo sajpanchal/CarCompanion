@@ -25,7 +25,7 @@ struct CarDetailsView: View {
     
     var body: some View {
         Group {
-            TitleView(title: "CAR DETAILS")
+            AppTitleView(title: "CAR DETAILS")
                 .padding(.top, 20)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())

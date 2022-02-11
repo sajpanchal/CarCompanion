@@ -13,7 +13,7 @@ struct DriverDetailsView: View {
     
     var body: some View {
         Group {
-            TitleView(title: "DRIVER DETAILS")
+            AppTitleView(title: "DRIVER DETAILS")
                 .padding(.top, 15)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
