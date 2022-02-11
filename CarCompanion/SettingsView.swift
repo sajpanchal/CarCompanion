@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct SettingsView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     
     @State var vehicles: [String] = ["Honda Civic", "Toyota Corolla", "Nissan Ultima"]
     @State var vehicle: Int = 0
@@ -45,16 +47,23 @@ struct SettingsView: View {
                     .listRowInsets(EdgeInsets())
                 }
             }
+           
             .toolbar(content: {
-                Button("ADD NEW VEHICLE") {
+                if !driver.isEmpty {
+                    Button("ADD NEW VEHICLE") {
+                        
+                    }
+                  
+                    .foregroundColor(.white)
+                    .background(.blue)
+                   
+                    .cornerRadius(20)
+                    .padding(5)
                     
                 }
-                .padding(5)
-                .foregroundColor(.white)
-                .background(.blue)
-                .cornerRadius(20)
+               
             })
-            .navigationTitle("Settings")
+            .navigationTitle(driver.isEmpty ? "Setup Account" : "Settings")
         }
     }
 }

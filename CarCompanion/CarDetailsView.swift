@@ -48,7 +48,7 @@ struct CarDetailsView: View {
             Section("ODOMETER (in KM)") {
                 TextField("What is your car odometer reading status?", value: $odometer, format: .number)
             }
-            Section("Fuel Capacity (in Litre") {
+            Section("Fuel Capacity (in Litre)") {
                 TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number)
             }
         }
