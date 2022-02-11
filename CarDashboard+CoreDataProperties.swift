@@ -2,7 +2,7 @@
 //  CarDashboard+CoreDataProperties.swift
 //  CarCompanion
 //
-//  Created by saj panchal on 2022-01-24.
+//  Created by saj panchal on 2022-02-09.
 //
 //
 
@@ -20,7 +20,8 @@ extension CarDashboard {
     @NSManaged public var currentTravel: Double
     @NSManaged public var odometer: Double
     @NSManaged public var fuelEfficiency: NSSet?
-    
+    @NSManaged public var car: Car?
+
     public var fuelEfficiencyArray: [FuelEfficiency] {
         let set = fuelEfficiency as? Set<FuelEfficiency> ?? []
         return set.sorted {
@@ -40,7 +41,7 @@ extension CarDashboard {
     static func fetchData(viewContext: NSManagedObjectContext) -> CarDashboard?{
         var carDashboard: CarDashboard?
         do {
-            carDashboard = try viewContext.fetch(Self.fetchRequest()).first          
+            carDashboard = try viewContext.fetch(Self.fetchRequest()).first
         }
         catch {
             print("couldn't fetch it.")
