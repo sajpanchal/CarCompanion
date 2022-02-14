@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VehicleSelectionView: View {
-    @Binding var vehicles: [String]
+    @Binding var vehicles: [Car]
     @Binding var vehicle: Int
     var body: some View {
         
@@ -17,8 +17,8 @@ struct VehicleSelectionView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             Picker("Select your current vehicle", selection: $vehicles[vehicle]) {
-                ForEach(vehicles, id: \.self) {
-                    Text($0)
+                ForEach(vehicles, id: \.self) { vehicle in
+                    Text((vehicle.model ?? "n/a") + (vehicle.make ?? ""))
                 }
             }
         }
