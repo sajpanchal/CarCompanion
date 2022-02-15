@@ -23,6 +23,7 @@ extension Car {
     @NSManaged public var plateNumber: String?
     @NSManaged public var dashboard: CarDashboard?
     @NSManaged public var driver: Driver?
+    
 
 }
 

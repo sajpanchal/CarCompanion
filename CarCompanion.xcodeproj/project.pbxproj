@@ -21,6 +21,7 @@
 		721841DF27B41F9A002FFAF4 /* Driver+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D727B41F9A002FFAF4 /* Driver+CoreDataProperties.swift */; };
 		721841E027B41F9A002FFAF4 /* Car+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D827B41F9A002FFAF4 /* Car+CoreDataClass.swift */; };
 		721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D927B41F9A002FFAF4 /* Car+CoreDataProperties.swift */; };
+		7221084C27BC07DD000813E1 /* NewVehicleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221084B27BC07DD000813E1 /* NewVehicleView.swift */; };
 		72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */; };
 		722193822797194900F121B3 /* AppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722193812797194900F121B3 /* AppSectionView.swift */; };
 		72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219383279719BB00F121B3 /* LocationFetcher.swift */; };
@@ -71,6 +72,7 @@
 		721841D727B41F9A002FFAF4 /* Driver+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		721841D827B41F9A002FFAF4 /* Car+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataClass.swift"; sourceTree = "<group>"; };
 		721841D927B41F9A002FFAF4 /* Car+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Car+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7221084B27BC07DD000813E1 /* NewVehicleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVehicleView.swift; sourceTree = "<group>"; };
 		7221937F279715BF00F121B3 /* FuelEfficiencyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyListView.swift; sourceTree = "<group>"; };
 		722193812797194900F121B3 /* AppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionView.swift; sourceTree = "<group>"; };
 		72219383279719BB00F121B3 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				72E1311427B5719F008F1FDA /* VehicleSelectionView.swift */,
 				721841D027B415F4002FFAF4 /* DriverDetailsView.swift */,
 				721841CE27B41559002FFAF4 /* CarDetailsView.swift */,
+				7221084B27BC07DD000813E1 /* NewVehicleView.swift */,
 			);
 			name = SettingsView;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				72219EEB2789FE3F00FD53DB /* CarCompanion.xcdatamodeld in Sources */,
 				721841E027B41F9A002FFAF4 /* Car+CoreDataClass.swift in Sources */,
 				72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */,
+				7221084C27BC07DD000813E1 /* NewVehicleView.swift in Sources */,
 				720361E22799D806008F4832 /* UpdateOdometer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

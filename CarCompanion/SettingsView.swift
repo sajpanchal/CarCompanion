@@ -25,6 +25,8 @@ struct SettingsView: View {
         
     @State var owner: String
     @State var driverLicense: String
+    
+    @State var addNewVehicle: Bool = false
                 
     var body: some View {
         NavigationView {
@@ -44,12 +46,10 @@ struct SettingsView: View {
                             if driver.isEmpty {
                                 createDriver()
                             }
-                            
                             if cars.isEmpty {
                                 let newCar = Car(context: viewContext)
                                 saveCar(car: newCar)
                             }
-                            
                             else {
                                 let car = cars.first(where: { $0.plateNumber == vehicles[vehicle].plateNumber })
                                 if let car = car {
@@ -65,13 +65,16 @@ struct SettingsView: View {
             .toolbar(content: {
                 if !driver.isEmpty {
                     Button("ADD NEW VEHICLE") {
-                        /* Add code to create a new vehicle*/
+                       addNewVehicle = true
                     }
                     .foregroundColor(.white)
                     .background(.blue)
                     .cornerRadius(20)
                     .padding(5)
                 }
+            })
+            .sheet(isPresented: $addNewVehicle, content: {
+                NewVehicleView()
             })
             .navigationTitle(driver.isEmpty ? "Setup Account" : "Settings")
         }
