@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) var viewContext
+    
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
     
@@ -40,7 +41,7 @@ struct SettingsView: View {
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
                     
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)
-                    
+                  
                     VStack {
                         AppButton(text: "Save", color: .blue, action: {
                             if driver.isEmpty {
@@ -66,6 +67,21 @@ struct SettingsView: View {
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
+                .onAppear(perform: {
+                    if !driver.isEmpty && !cars.isEmpty {
+                       vehicles = []
+                       
+                        for car in cars {
+                           print(car)
+                           vehicles.append(car)
+                       }
+                        
+                        getCarData()
+                        
+                        getDriverData()
+                    }
+               })
+            
             }
             .toolbar(content: {
                 if !driver.isEmpty {
@@ -81,22 +97,7 @@ struct SettingsView: View {
             .sheet(isPresented: $addNewVehicle, content: {
                 NewVehicleView(vehicles: $vehicles)
             })
-            .onAppear(perform: {
-                DispatchQueue.main.async {
-                if !driver.isEmpty && !cars.isEmpty {
-                    vehicles = []
-                    
-                    for car in cars {
-                        print(car)
-                        vehicles.append(car)
-                    }
-                    
-                        getData()
-                    }
-                }
-                
-                
-            })
+           
             .navigationTitle(driver.isEmpty ? "Setup Account" : "Settings")
         }
     }
@@ -122,6 +123,7 @@ struct SettingsView: View {
         car.odometer = odometer
         car.timeStamp = Date()
         car.driver = driver.first!
+        
         do {
             try viewContext.save()
         }
@@ -129,31 +131,41 @@ struct SettingsView: View {
             print("Couldn't save car details...")
         }
     }
-    func getData() {
-       // let driver = driver.first!
-        
-        
+    
+    func getCarData() {
+             
         let car = vehicle
-        print("-----------------Get data--------------------")
-        print(car)
-   
-            make = car.make ?? "n/a"
-            model = car.model ?? "n/a"
-            fuelCapacity = car.fuelCapacity
-            licensePlate = car.plateNumber!
-            year = Int(car.year)
-            odometer = car.odometer
-            owner = car.driver!.name ?? "N/A"
-            driverLicense = car.driver!.licenseNumber ?? "N/A"
+        print("-----------------Get Car data--------------------")
         
-           
-        
+        self.make = car.make ?? "n/a"
+        self.model = car.model ?? "n/a"
+        self.fuelCapacity = car.fuelCapacity
+        self.licensePlate = car.plateNumber ?? ""
+        self.year = Int(car.year)
+        self.odometer = car.odometer
        
+        print(make)
+        print(model)
+        print(fuelCapacity)
+        print(licensePlate)
+        print(year)
+        print(odometer)
+       
+    }
+    func getDriverData() {
+                    
+        let car = vehicle
+        print("-----------------Get Vehicle data--------------------")
         
-        
-        
+        self.owner = car.driver?.name ?? ""
+        self.driverLicense = car.driver?.licenseNumber ?? ""
+             
+        print(owner)
+        print(driverLicense)
     }
 }
+
+
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

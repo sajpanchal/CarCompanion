@@ -11,6 +11,9 @@ struct DriverDetailsView: View {
     @Binding var owner: String
     @Binding var driverLicense: String
     
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
+    
     var body: some View {
         Group {
             AppTitleView(title: "DRIVER DETAILS")
@@ -18,12 +21,19 @@ struct DriverDetailsView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             Section("Owner's Full Name") {
-                TextField("Who is the car Owner?", text: $owner)
+                TextField("Who is the car Owner?", text: $owner).id(owner)
             }
             Section("Driver's License") {
-                TextField("Enter Your Driver's Lincense Number", text: $driverLicense)
+                TextField("Enter Your Driver's License Number", text: $driverLicense).id(driverLicense)
             }
         }
+        .onAppear(perform: {
+            DispatchQueue.main.async {
+                self.owner = driver.first?.name ?? ""
+                self.driverLicense = driver.first?.licenseNumber ?? ""
+            }
+           
+        })
     }
 }
 

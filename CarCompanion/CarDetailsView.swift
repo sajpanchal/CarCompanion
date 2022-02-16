@@ -30,10 +30,10 @@ struct CarDetailsView: View {
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             Section("Make") {
-                TextField("What brand is this car?", text: $make)
+                TextField("What brand is this car?", text: $make).id(make)
             }
             Section("Model") {
-                TextField("What model is this car?", text: $model)
+                TextField("What model is this car?", text: $model).id(model)
             }
             Section("Year") {
                 Picker("What year is your car make?", selection: $year) {
@@ -43,13 +43,13 @@ struct CarDetailsView: View {
                 }
             }
             Section("License plate") {
-                TextField("What is the Car License Plate Number", text: $licensePlate)
+                TextField("What is the Car License Plate Number", text: $licensePlate).id(licensePlate)
             }
             Section("ODOMETER (in KM)") {
-                TextField("What is your car odometer reading status?", value: $odometer, format: .number)
+                TextField("What is your car odometer reading status?", value: $odometer, format: .number).id(odometer)
             }
             Section("Fuel Capacity (in Litre)") {
-                TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number)
+                TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number).id(fuelCapacity)
             }
         }
     }
