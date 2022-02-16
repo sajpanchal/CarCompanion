@@ -10,8 +10,9 @@ import SwiftUI
 struct NewVehicleView: View {
     
     @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest(entity: Car.entity(), sortDescriptors: []) var cars: FetchedResults<Car>
+    @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
+    
     @State var make: String = ""
     @State var model: String = ""
     @State var year: Int = 0
@@ -19,7 +20,10 @@ struct NewVehicleView: View {
     @State var fuelCapacity: Double = 0.0
     @State var licensePlate: String = ""
     
+    @Binding var vehicles: [Car]
+    
     @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -47,18 +51,25 @@ struct NewVehicleView: View {
         car.fuelCapacity = fuelCapacity
         car.plateNumber = licensePlate
         car.year = Int16(year)
+        car.timeStamp = Date()
         car.driver = driver.first!
         do {
             try viewContext.save()
+            vehicles = []
+            for car in cars {
+                vehicles.append(car)
+            }
+            dismiss()
         }
         catch {
             print("Couldn't save car details...")
         }
+     
     }
 }
 
 struct NewVehicleView_Previews: PreviewProvider {
     static var previews: some View {
-        NewVehicleView()
+        NewVehicleView(vehicles: .constant([]))
     }
 }

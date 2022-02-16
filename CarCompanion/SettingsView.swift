@@ -11,10 +11,10 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
-    @FetchRequest(entity: Car.entity(), sortDescriptors: []) var cars: FetchedResults<Car>
+    @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
     
     @State var vehicles: [Car] = []
-    @State var vehicle: Int = 0
+    @State var vehicle: Car = Car.fetchData()!
     
     @State var make: String
     @State var model: String
@@ -51,10 +51,15 @@ struct SettingsView: View {
                                 saveCar(car: newCar)
                             }
                             else {
-                                let car = cars.first(where: { $0.plateNumber == vehicles[vehicle].plateNumber })
+                                let car = cars.first(where: { $0.plateNumber == vehicle.plateNumber })
                                 if let car = car {
                                     saveCar(car: car)
                                 }
+                            }
+                            vehicles = []
+                            
+                            for car in cars {
+                                vehicles.append(car)
                             }
                         }, width: 300, height: 40)
                     }
@@ -74,7 +79,23 @@ struct SettingsView: View {
                 }
             })
             .sheet(isPresented: $addNewVehicle, content: {
-                NewVehicleView()
+                NewVehicleView(vehicles: $vehicles)
+            })
+            .onAppear(perform: {
+                DispatchQueue.main.async {
+                if !driver.isEmpty && !cars.isEmpty {
+                    vehicles = []
+                    
+                    for car in cars {
+                        print(car)
+                        vehicles.append(car)
+                    }
+                    
+                        getData()
+                    }
+                }
+                
+                
             })
             .navigationTitle(driver.isEmpty ? "Setup Account" : "Settings")
         }
@@ -98,6 +119,8 @@ struct SettingsView: View {
         car.fuelCapacity = fuelCapacity
         car.plateNumber = licensePlate
         car.year = Int16(year)
+        car.odometer = odometer
+        car.timeStamp = Date()
         car.driver = driver.first!
         do {
             try viewContext.save()
@@ -106,11 +129,35 @@ struct SettingsView: View {
             print("Couldn't save car details...")
         }
     }
+    func getData() {
+       // let driver = driver.first!
+        
+        
+        let car = vehicle
+        print("-----------------Get data--------------------")
+        print(car)
+   
+            make = car.make ?? "n/a"
+            model = car.model ?? "n/a"
+            fuelCapacity = car.fuelCapacity
+            licensePlate = car.plateNumber!
+            year = Int(car.year)
+            odometer = car.odometer
+            owner = car.driver!.name ?? "N/A"
+            driverLicense = car.driver!.licenseNumber ?? "N/A"
+        
+           
+        
+       
+        
+        
+        
+    }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(make: "", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: "")
+        SettingsView(make: "x", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: "")
     }
 }
 
