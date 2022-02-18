@@ -15,25 +15,16 @@ struct DriverDetailsView: View {
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     
     var body: some View {
-        Group {
+        VStack {
             AppTitleView(title: "DRIVER DETAILS")
                 .padding(.top, 15)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
-            Section("Owner's Full Name") {
-                TextField("Who is the car Owner?", text: $owner).id(owner)
-            }
-            Section("Driver's License") {
-                TextField("Enter Your Driver's License Number", text: $driverLicense).id(driverLicense)
-            }
-        }
-        .onAppear(perform: {
-            DispatchQueue.main.async {
-                self.owner = driver.first?.name ?? ""
-                self.driverLicense = driver.first?.licenseNumber ?? ""
-            }
+            AppSection(value: $owner, title: "Owner's Full Name", placeholder: "Who is the car Owner?")
+           AppSection(value: $driverLicense, title: "Driver's License", placeholder: "Enter Your Driver's License Number")
            
-        })
+        }
+        
     }
 }
 

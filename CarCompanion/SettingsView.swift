@@ -15,20 +15,26 @@ struct SettingsView: View {
     @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
     
     @State var vehicles: [Car] = []
-    @State var vehicle: Car = Car.fetchData()!
+    @State var vehicle: Car = Car.fetchData() ?? Car()
     
-    @State var make: String
-    @State var model: String
-    @State var year: Int
-    @State var odometer: Double
-    @State var fuelCapacity: Double
-    @State var licensePlate: String
+    @State var make: String = ""
+    @State var model: String = ""
+    @State var year: Int = 0
+    @State var odometer: Double = 0.0
+    @State var fuelCapacity: Double = 0.0
+    @State var licensePlate: String = ""
         
-    @State var owner: String
-    @State var driverLicense: String
+    @State var owner: String = ""
+    @State var driverLicense: String = ""
     
     @State var addNewVehicle: Bool = false
-                
+    var latestYear = { () -> Int in
+        let date = Date()
+        let calender = Calendar.current
+        let component = calender.dateComponents([.year], from: date)
+        return component.year!
+        
+    }()
     var body: some View {
         NavigationView {
             VStack {
@@ -37,11 +43,14 @@ struct SettingsView: View {
                     if !cars.isEmpty && !driver.isEmpty {
                         VehicleSelectionView(vehicles: $vehicles, vehicle: $vehicle)
                     }
-                    
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
-                    
+                   
+                                        
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)
-                  
+                    
+                    
+                   
+                                  
                     VStack {
                         AppButton(text: "Save", color: .blue, action: {
                             if driver.isEmpty {
@@ -67,22 +76,23 @@ struct SettingsView: View {
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
-                .onAppear(perform: {
-                    if !driver.isEmpty && !cars.isEmpty {
-                       vehicles = []
-                       
-                        for car in cars {
-                           print(car)
-                           vehicles.append(car)
-                       }
-                        
-                        getCarData()
-                        
-                        getDriverData()
-                    }
-               })
+              
             
             }
+            .onAppear(perform: {
+                if !driver.isEmpty && !cars.isEmpty {
+                   vehicles = []
+                   
+                    for car in cars {
+                       print(car)
+                       vehicles.append(car)
+                   }
+                    
+                    getCarData()
+                    
+                    getDriverData()
+                }
+           })
             .toolbar(content: {
                 if !driver.isEmpty {
                     Button("ADD NEW VEHICLE") {
@@ -136,13 +146,15 @@ struct SettingsView: View {
              
         let car = vehicle
         print("-----------------Get Car data--------------------")
+        DispatchQueue.main.async {
+            self.make = car.make ?? "n/a"
+            self.model = car.model ?? "n/a"
+            self.fuelCapacity = car.fuelCapacity
+            self.licensePlate = car.plateNumber ?? ""
+            self.year = Int(car.year)
+            self.odometer = car.odometer
+        }
         
-        self.make = car.make ?? "n/a"
-        self.model = car.model ?? "n/a"
-        self.fuelCapacity = car.fuelCapacity
-        self.licensePlate = car.plateNumber ?? ""
-        self.year = Int(car.year)
-        self.odometer = car.odometer
        
         print(make)
         print(model)
@@ -156,9 +168,11 @@ struct SettingsView: View {
                     
         let car = vehicle
         print("-----------------Get Vehicle data--------------------")
-        
-        self.owner = car.driver?.name ?? ""
-        self.driverLicense = car.driver?.licenseNumber ?? ""
+        DispatchQueue.main.async {
+            self.owner = car.driver?.name ?? ""
+            self.driverLicense = car.driver?.licenseNumber ?? ""
+        }
+
              
         print(owner)
         print(driverLicense)
@@ -169,7 +183,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(make: "x", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: "")
+        SettingsView(/*make: "", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: ""*/)
     }
 }
 

@@ -37,6 +37,10 @@
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
 		725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */; };
+		72948A1627C00F1700E0A53C /* AppSectionDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1527C00F1700E0A53C /* AppSectionDouble.swift */; };
+		72948A1827C00F7500E0A53C /* AppSectionInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1727C00F7500E0A53C /* AppSectionInt.swift */; };
+		72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1927C00FD300E0A53C /* AppSection.swift */; };
+		72948A1C27C011DF00E0A53C /* AppPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1B27C011DF00E0A53C /* AppPicker.swift */; };
 		72E1311527B5719F008F1FDA /* VehicleSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1311427B5719F008F1FDA /* VehicleSelectionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +96,10 @@
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
+		72948A1527C00F1700E0A53C /* AppSectionDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionDouble.swift; sourceTree = "<group>"; };
+		72948A1727C00F7500E0A53C /* AppSectionInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionInt.swift; sourceTree = "<group>"; };
+		72948A1927C00FD300E0A53C /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
+		72948A1B27C011DF00E0A53C /* AppPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPicker.swift; sourceTree = "<group>"; };
 		72E1311427B5719F008F1FDA /* VehicleSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,10 +231,14 @@
 		723B7BF727B6C6F30082CDA7 /* AppViews */ = {
 			isa = PBXGroup;
 			children = (
+				72948A1B27C011DF00E0A53C /* AppPicker.swift */,
 				725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */,
 				720B4A8A27A1BD32009667DB /* AppAlertView.swift */,
 				7215AF2C279B0E3F007BCDC2 /* AppButton.swift */,
 				722193812797194900F121B3 /* AppSectionView.swift */,
+				72948A1527C00F1700E0A53C /* AppSectionDouble.swift */,
+				72948A1927C00FD300E0A53C /* AppSection.swift */,
+				72948A1727C00F7500E0A53C /* AppSectionInt.swift */,
 			);
 			name = AppViews;
 			sourceTree = "<group>";
@@ -380,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */,
+				72948A1827C00F7500E0A53C /* AppSectionInt.swift in Sources */,
 				72219EE82789FE3F00FD53DB /* Persistence.swift in Sources */,
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
 				721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */,
@@ -389,7 +402,9 @@
 				721841DD27B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift in Sources */,
 				721841DF27B41F9A002FFAF4 /* Driver+CoreDataProperties.swift in Sources */,
 				721841DE27B41F9A002FFAF4 /* Driver+CoreDataClass.swift in Sources */,
+				72948A1C27C011DF00E0A53C /* AppPicker.swift in Sources */,
 				721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */,
+				72948A1627C00F1700E0A53C /* AppSectionDouble.swift in Sources */,
 				722193822797194900F121B3 /* AppSectionView.swift in Sources */,
 				725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */,
 				721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */,
@@ -400,6 +415,7 @@
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,
 				725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
+				72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */,
 				72219EEB2789FE3F00FD53DB /* CarCompanion.xcdatamodeld in Sources */,
 				721841E027B41F9A002FFAF4 /* Car+CoreDataClass.swift in Sources */,
 				72219380279715BF00F121B3 /* FuelEfficiencyListView.swift in Sources */,

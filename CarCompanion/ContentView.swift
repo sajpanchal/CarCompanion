@@ -22,8 +22,8 @@ struct ContentView: View {
     @ObservedObject var locationFetcher = LocationFetcher()
 
     var body: some View {
-        if driver.isEmpty {
-            SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
+        if driver.first == nil {
+            SettingsView(/*make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: ""*/)
         }
         
         else {
@@ -55,7 +55,7 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
-                SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
+                SettingsView(/*make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: ""*/)
                     .tabItem {
                         Image(systemName: "gearshape.2.fill")
                         Text("Settings")

@@ -21,7 +21,13 @@ struct NewVehicleView: View {
     @State var licensePlate: String = ""
     
     @Binding var vehicles: [Car]
-    
+    var latestYear = { () -> Int in
+        let date = Date()
+        let calender = Calendar.current
+        let component = calender.dateComponents([.year], from: date)
+        return component.year!
+        
+    }()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -29,7 +35,40 @@ struct NewVehicleView: View {
             VStack {
                 Spacer()
                 Form {
-                    CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
+                    AppTitleView(title: "CAR DETAILS")
+                        .padding(.top, 20)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                  
+                  
+                      
+                            Section("Make") {
+                                TextField("What brand is this car?", text: $make)
+
+                            }
+                            Section("Model") {
+                                TextField("What model is this car?", text: $model)//.focused($focus)//.id(model)
+                            }
+                                                                        
+                   
+                    Section("Year") {
+                        Picker("What year is your car make?", selection: $year) {
+                            ForEach((1900...latestYear).reversed(), id: \.self) {
+                                Text(String($0))
+                            }
+                        }
+                    }
+                    Section("License plate") {
+                        TextField("What is the Car License Plate Number", text: $licensePlate)//.id(licensePlate)
+                            
+                    }
+                    Section("ODOMETER (in KM)") {
+                        TextField("What is your car odometer reading status?", value: $odometer, format: .number)//.id(odometer)
+                    }
+                    Section("Fuel Capacity (in Litre)") {
+                        TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number)//.id(fuelCapacity)
+                    }
+                    
                     VStack {
                         AppButton(text: "Save", color: .blue, action: {
                             saveCar(car: Car(context: viewContext))
