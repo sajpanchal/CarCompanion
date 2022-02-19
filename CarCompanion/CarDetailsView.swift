@@ -15,25 +15,33 @@ struct CarDetailsView: View {
     @Binding var fuelCapacity: Double
     @Binding var licensePlate: String
     @FocusState var focus: Bool
-    
+    var latestYear = { () -> Int in
+        let date = Date()
+        let calender = Calendar.current
+        let component = calender.dateComponents([.year], from: date)
+        return component.year!
+        
+    }()
     
     
     var body: some View {
         VStack {
-            AppTitleView(title: "CAR DETAILS")
-                .padding(.top, 20)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-        
-            AppSection(value: $make, title: "Make", placeholder: "What brand is this car?")
-            AppSection(value: $model, title: "Model", placeholder: "What model is this car?")
-            AppPicker(value: $year, title: "Year", placeholder: "What year is your car make?")
             
-            AppSection(value: $licensePlate, title: "License plate", placeholder: "What is the Car License Plate Number")
-            AppSectionDouble(value: $odometer, title: "ODOMETER (in KM)", placeholder: "What is your car odometer reading status?")
-            AppSectionDouble(value: $fuelCapacity, title: "Fuel Capacity (in Litre)", placeholder: "What is the car fuel capacity?")
+        
+            AppSection(value: $make, title: "MAKE", placeholder: "What is the Car Branch?")
+            AppSection(value: $model, title: "MODEL", placeholder: "What is the Car Model")
+            
+            AppSection(value: $licensePlate, title: "LICENSE PLATE #", placeholder: "Car License Plate No.?")
+            AppSectionDouble(value: $odometer, title: "ODOMETER (IN KM)", placeholder: "Car Odometer Standing?")
+            AppSectionDouble(value: $fuelCapacity, title: "FUEL CAPACITY (IN LITRE)", placeholder: "Car Fuel Capacity?")
             
         }
+        AppPicker(value: $year, title: "YEAR", placeholder: "Year of Car Manufacturing")
+       
+            .listSectionSeparator(.hidden)
+            .listSectionSeparatorTint(Color.clear)
+            .listRowSeparator(.hidden)
+       
         
      
     }

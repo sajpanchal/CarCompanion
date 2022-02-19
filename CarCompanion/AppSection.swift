@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct AppSection: View {
+    @Environment (\.colorScheme) var colorScheme
     @Binding var value: String
     var title: String
     var placeholder: String
     var body: some View {
         HStack {
         Text(title)
-           .font(.body)
-           .fontWeight(.semibold)
+           .font(.footnote)
            .foregroundColor(Color.gray)
            .frame(height: 40, alignment: .leading)
-           .padding(.leading, 10)
+           .padding(.leading, 0)
             Spacer()
         }
         HStack {
             TextField(placeholder, text: $value)
-                .padding(5)
-                .background(Color.secondary)
+                .padding(.horizontal,2)
+                .padding(.vertical, 10)
+                .background(colorScheme == .dark ? Color.black : Color( red: 0.9, green: 0.9, blue: 0.9, opacity: 1.0))
                 .cornerRadius(5)
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 0)
         .padding(.bottom, 10)
         .padding(.top, -15)
     }

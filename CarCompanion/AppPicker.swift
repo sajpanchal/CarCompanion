@@ -19,28 +19,26 @@ struct AppPicker: View {
         
     }()
     var body: some View {
-        HStack {
-        Text(title)
-           .font(.body)
-           .fontWeight(.semibold)
-           .foregroundColor(Color.gray)
-           .frame(height: 40, alignment: .leading)
-           .padding(.leading, 10)
-            Spacer()
-        }
-        HStack {
+        VStack {
+            HStack {
+                Text(title)
+                   .font(.footnote)                   
+                   .foregroundColor(Color.gray)
+                   .frame(alignment: .leading)
+                   .padding(.leading, 0)
+                Spacer()
+            }
+            .frame(height: 5)
+            .padding(.top, 20)
             Picker(placeholder, selection: $value) {
                 ForEach((1900...latestYear).reversed(), id: \.self) {
                     Text(String($0))
                         .padding(5)
-                       
                 }
             }
-               
+            .padding(.vertical,5)
         }
-        .padding(.horizontal, 10)
-        .padding(.bottom, 10)
-        .padding(.top, -15)
+        .padding(.top, -10)
     }
 }
 

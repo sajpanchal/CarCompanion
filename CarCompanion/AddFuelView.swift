@@ -12,7 +12,6 @@ struct AddFuelView: View {
        
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
-//@ObservedObject var locationFetcher: LocationFetcher
     @State var fuelAmount: Double = 0.0
     
     @Environment(\.dismiss) var dismiss
@@ -40,7 +39,7 @@ struct AddFuelView: View {
                    
                     dismiss()
                     
-                }, width: 300, height: 40).disabled(fuelAmount == nil)
+                }, width: 300, height: 40).disabled(fuelAmount == 0.0)
                 Spacer()
             }
             .onAppear(perform: {

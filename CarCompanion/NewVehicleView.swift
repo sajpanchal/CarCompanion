@@ -72,9 +72,10 @@ struct NewVehicleView: View {
                     VStack {
                         AppButton(text: "Save", color: .blue, action: {
                             saveCar(car: Car(context: viewContext))
-                        }, width: 300, height: 35)
+                        }, width: 300, height: 40)
                         
                     }
+                    .padding(.vertical, 20)
                     .listRowInsets(EdgeInsets())
                     .listRowBackground(Color.clear)
                 }

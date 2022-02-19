@@ -43,8 +43,16 @@ struct SettingsView: View {
                     if !cars.isEmpty && !driver.isEmpty {
                         VehicleSelectionView(vehicles: $vehicles, vehicle: $vehicle)
                     }
+                    AppTitleView(title: "CAR DETAILS")
+                        .padding(.top, 20)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
-                   
+                    
+                    AppTitleView(title: "DRIVER DETAILS")
+                        .padding(.top, 15)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
                                         
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)
                     
@@ -73,6 +81,7 @@ struct SettingsView: View {
                             }
                         }, width: 300, height: 40)
                     }
+                    .padding(.vertical, 20)
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
@@ -132,7 +141,10 @@ struct SettingsView: View {
         car.year = Int16(year)
         car.odometer = odometer
         car.timeStamp = Date()
-        car.driver = driver.first!
+        let driver = driver.first!
+        driver.name = owner
+        driver.licenseNumber = driverLicense
+        car.driver = driver
         
         do {
             try viewContext.save()
@@ -146,16 +158,14 @@ struct SettingsView: View {
              
         let car = vehicle
         print("-----------------Get Car data--------------------")
-        DispatchQueue.main.async {
-            self.make = car.make ?? "n/a"
-            self.model = car.model ?? "n/a"
-            self.fuelCapacity = car.fuelCapacity
-            self.licensePlate = car.plateNumber ?? ""
-            self.year = Int(car.year)
-            self.odometer = car.odometer
-        }
         
-       
+        self.make = car.make ?? "n/a"
+        self.model = car.model ?? "n/a"
+        self.fuelCapacity = car.fuelCapacity
+        self.licensePlate = car.plateNumber ?? ""
+        self.year = Int(car.year)
+        self.odometer = car.odometer
+                       
         print(make)
         print(model)
         print(fuelCapacity)
@@ -168,10 +178,10 @@ struct SettingsView: View {
                     
         let car = vehicle
         print("-----------------Get Vehicle data--------------------")
-        DispatchQueue.main.async {
+      
             self.owner = car.driver?.name ?? ""
             self.driverLicense = car.driver?.licenseNumber ?? ""
-        }
+        
 
              
         print(owner)

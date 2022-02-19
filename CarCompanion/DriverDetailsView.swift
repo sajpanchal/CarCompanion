@@ -16,14 +16,12 @@ struct DriverDetailsView: View {
     
     var body: some View {
         VStack {
-            AppTitleView(title: "DRIVER DETAILS")
-                .padding(.top, 15)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-            AppSection(value: $owner, title: "Owner's Full Name", placeholder: "Who is the car Owner?")
-           AppSection(value: $driverLicense, title: "Driver's License", placeholder: "Enter Your Driver's License Number")
+           
+            AppSection(value: $owner, title: "OWNER'S FULLNAME", placeholder: "Who is the Owner?")
+           AppSection(value: $driverLicense, title: "DRIVER'S LICENSE", placeholder: "Enter Driver's License Number")
            
         }
+        .cornerRadius(5)
         
     }
 }
