@@ -37,7 +37,7 @@ struct CarDetailsView: View {
             
         }
         AppPicker(value: $year, title: "YEAR", placeholder: "Year of Car Manufacturing")
-       
+           
             .listSectionSeparator(.hidden)
             .listSectionSeparatorTint(Color.clear)
             .listRowSeparator(.hidden)

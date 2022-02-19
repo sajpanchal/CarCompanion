@@ -23,7 +23,7 @@ struct ContentView: View {
 
     var body: some View {
         if driver.first == nil {
-            SettingsView(/*make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: ""*/)
+            SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
         }
         
         else {
@@ -55,12 +55,24 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
-                SettingsView(/*make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: ""*/)
-                    .tabItem {
-                        Image(systemName: "gearshape.2.fill")
-                        Text("Settings")
-                    }
-                    .tag(1)
+                if driver.first!.Cars.isEmpty {
+                    SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
+                        .tabItem {
+                            Image(systemName: "gearshape.2.fill")
+                            Text("Settings")
+                        }
+                        .tag(1)
+                }
+                else {
+                    let car = Car.fetchData()!
+                    SettingsView(make: car.make!, model: car.model!, year: Int(car.year), odometer: car.odometer, fuelCapacity: car.fuelCapacity, licensePlate: car.plateNumber!, owner: driver.first!.name!, driverLicense: driver.first!.licenseNumber!)
+                        .tabItem {
+                            Image(systemName: "gearshape.2.fill")
+                            Text("Settings")
+                        }
+                        .tag(1)
+                }
+               
             }
                     
         }

@@ -35,7 +35,9 @@ struct AppPicker: View {
                     Text(String($0))
                         .padding(5)
                 }
+               
             }
+            
             .padding(.vertical,5)
         }
         .padding(.top, -10)

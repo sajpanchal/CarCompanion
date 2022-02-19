@@ -16,16 +16,15 @@ struct SettingsView: View {
     
     @State var vehicles: [Car] = []
     @State var vehicle: Car = Car.fetchData() ?? Car()
-    
-    @State var make: String = ""
-    @State var model: String = ""
-    @State var year: Int = 0
-    @State var odometer: Double = 0.0
-    @State var fuelCapacity: Double = 0.0
-    @State var licensePlate: String = ""
+    @State var make: String
+    @State var model: String
+    @State var year: Int
+    @State var odometer: Double
+    @State var fuelCapacity: Double
+    @State var licensePlate: String
         
-    @State var owner: String = ""
-    @State var driverLicense: String = ""
+    @State var owner: String
+    @State var driverLicense: String
     
     @State var addNewVehicle: Bool = false
     var latestYear = { () -> Int in
@@ -89,6 +88,7 @@ struct SettingsView: View {
             
             }
             .onAppear(perform: {
+                print("on appear called..")
                 if !driver.isEmpty && !cars.isEmpty {
                    vehicles = []
                    
@@ -96,12 +96,23 @@ struct SettingsView: View {
                        print(car)
                        vehicles.append(car)
                    }
-                    
-                    getCarData()
-                    
-                    getDriverData()
+                 //   getCarData()
+                  //  getDriverData()
                 }
            })
+            .onChange(of: year, perform: { x in
+                print("on change called")
+               
+                year = x
+               
+                print("value is \(year)")
+               
+            })
+            .onChange(of: vehicle, perform: { vehicle in
+                getCarData()
+                getDriverData()
+                
+            })
             .toolbar(content: {
                 if !driver.isEmpty {
                     Button("ADD NEW VEHICLE") {
@@ -193,7 +204,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(/*make: "", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: ""*/)
+        SettingsView(make: "", model: "", year: 2020, odometer: 0.0, fuelCapacity: 0, licensePlate: "", owner: "", driverLicense: "")
     }
 }
 
