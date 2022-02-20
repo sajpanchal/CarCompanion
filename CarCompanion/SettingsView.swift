@@ -22,7 +22,7 @@ struct SettingsView: View {
     @State var odometer: Double
     @State var fuelCapacity: Double
     @State var licensePlate: String
-        
+    @State var isTapped = false
     @State var owner: String
     @State var driverLicense: String
     
@@ -46,6 +46,7 @@ struct SettingsView: View {
                         .padding(.top, 20)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
+                    
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
                     
                     AppTitleView(title: "DRIVER DETAILS")
@@ -55,11 +56,9 @@ struct SettingsView: View {
                                         
                     DriverDetailsView(owner: $owner, driverLicense: $driverLicense)
                     
-                    
-                   
-                                  
                     VStack {
                         AppButton(text: "Save", color: .blue, action: {
+                            print("save button tapped.....")
                             if driver.isEmpty {
                                 createDriver()
                             }
@@ -84,8 +83,6 @@ struct SettingsView: View {
                     .listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
-              
-            
             }
             .onAppear(perform: {
                 print("on appear called..")
@@ -96,22 +93,16 @@ struct SettingsView: View {
                        print(car)
                        vehicles.append(car)
                    }
-                 //   getCarData()
-                  //  getDriverData()
                 }
            })
             .onChange(of: year, perform: { x in
                 print("on change called")
-               
                 year = x
-               
                 print("value is \(year)")
-               
             })
             .onChange(of: vehicle, perform: { vehicle in
                 getCarData()
                 getDriverData()
-                
             })
             .toolbar(content: {
                 if !driver.isEmpty {
@@ -130,6 +121,13 @@ struct SettingsView: View {
            
             .navigationTitle(driver.isEmpty ? "Setup Account" : "Settings")
         }
+        .onAppear(perform: {
+          
+            if !driver.isEmpty && !cars.isEmpty {
+                let value = UserDefaults.standard.string(forKey: "CurrentVehicle")
+                vehicle = driver.first!.Cars.first(where: {$0.plateNumber == value})!
+            }
+        })
     }
     
     func createDriver() {
@@ -145,6 +143,8 @@ struct SettingsView: View {
     }
     
     func saveCar(car: Car) {
+    
+        UserDefaults.standard.set(licensePlate, forKey: "CurrentVehicle")
         car.make = make
         car.model = model
         car.fuelCapacity = fuelCapacity
@@ -189,14 +189,11 @@ struct SettingsView: View {
                     
         let car = vehicle
         print("-----------------Get Vehicle data--------------------")
-      
-            self.owner = car.driver?.name ?? ""
-            self.driverLicense = car.driver?.licenseNumber ?? ""
-        
-
-             
+        self.owner = car.driver?.name ?? ""
+        self.driverLicense = car.driver?.licenseNumber ?? ""
         print(owner)
         print(driverLicense)
+        
     }
 }
 
