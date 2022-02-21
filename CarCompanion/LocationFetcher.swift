@@ -17,10 +17,12 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
    
     var manager = CLLocationManager()
     var viewContext = PersistenceController.shared.container.viewContext
-    var carDashboard: CarDashboard?
+    @Published var driver: Driver?
+    @Published var index: Int?
     
     override init() {
         super.init()
+        print("Location fetch init Called.")
         manager.delegate = self
         
         manager.requestAlwaysAuthorization()
@@ -30,24 +32,17 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
         manager.allowsBackgroundLocationUpdates = true
         manager.showsBackgroundLocationIndicator = true
         
-        carDashboard = CarDashboard.fetchData(viewContext: viewContext)
-        
-        if carDashboard == nil {
-            carDashboard = CarDashboard(context: viewContext)
-            carDashboard?.odometer = 0.0
-            carDashboard?.currentTravel = 0.0
-            carDashboard?.currentFuel = 0.0
-            print("carDashboard is nil")
-            CarDashboard.saveContext(viewContext: viewContext)
+        driver = Driver.fetchData(viewContext: viewContext)
+        index = driver!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})
+        if self.driver!.Cars[index ?? 0].dashboard == nil {
+            self.driver!.Cars[index ?? 0].dashboard = CarDashboard(context: viewContext)
         }
-        print("data found\n odometer:", carDashboard!.odometer)
-        print("current travel:", carDashboard!.currentTravel)
-            
+        print("car index is found: \(index)")
       
     }
     
     func start() {
-        carDashboard = CarDashboard.fetchData(viewContext: viewContext)
+        driver = Driver.fetchData(viewContext: viewContext)
         manager.startUpdatingLocation()
     }
     
@@ -62,9 +57,8 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate, ObservableObject {
         lastLocation = locations.last
         
         let difference = lastLocation?.distance(from: currentLocation!)
-        self.carDashboard!.currentTravel += abs(Double(difference!)/1000)
-        self.carDashboard!.odometer += abs(Double(difference!)/1000)
-      
+        self.driver!.Cars[index ?? 0].dashboard!.currentTravel += abs(Double(difference!)/1000)
+        self.driver!.Cars[index ?? 0].dashboard!.odometer += abs(Double(difference!)/1000)
         CarDashboard.saveContext(viewContext: self.viewContext)                       
         speed = Double(lastLocation!.speed)/3.6
     }

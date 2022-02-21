@@ -34,6 +34,12 @@ struct ContentView: View {
                         .onAppear(perform: {
                             print("on appear")
                             locationFetcher.start()
+                            let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
+                            
+                            if currentVehicle == nil {
+                                UserDefaults.standard.set(driver.first!.Cars.first!.plateNumber, forKey: "CurrentVehicle")
+                            }
+                          
                             /*showFuelAlert = carDashboard.first!.currentFuel == 0.0  ? true  : false*/
                         })
                         .onChange(of: scenePhase) { newPhase in

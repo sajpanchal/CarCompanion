@@ -26,7 +26,25 @@ extension Driver {
             $0.model! < $1.model!
         }
     }
-
+    static func fetchData(viewContext: NSManagedObjectContext) -> Driver?{
+        var driver: Driver?
+        do {
+            driver = try viewContext.fetch(Self.fetchRequest()).first
+        }
+        catch {
+            print("couldn't fetch it.")
+        }
+        return driver
+    }
+    static func saveContext(viewContext: NSManagedObjectContext) {
+        do {
+            try viewContext.save()
+          //  print("car dashboard updated!")
+        }
+        catch {
+            print("save failed")
+        }
+    }
 }
 
 // MARK: Generated accessors for car
