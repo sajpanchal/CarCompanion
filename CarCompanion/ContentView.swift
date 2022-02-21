@@ -22,7 +22,7 @@ struct ContentView: View {
     @ObservedObject var locationFetcher = LocationFetcher()
 
     var body: some View {
-        if driver.isEmpty {
+        if driver.first == nil {
             SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
         }
         
@@ -34,6 +34,12 @@ struct ContentView: View {
                         .onAppear(perform: {
                             print("on appear")
                             locationFetcher.start()
+                            let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
+                            
+                            if currentVehicle == nil {
+                                UserDefaults.standard.set(driver.first!.Cars.first!.plateNumber, forKey: "CurrentVehicle")
+                            }
+                          
                             /*showFuelAlert = carDashboard.first!.currentFuel == 0.0  ? true  : false*/
                         })
                         .onChange(of: scenePhase) { newPhase in
@@ -55,12 +61,24 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
-                SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
-                    .tabItem {
-                        Image(systemName: "gearshape.2.fill")
-                        Text("Settings")
-                    }
-                    .tag(1)
+                if driver.first!.Cars.isEmpty {
+                    SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
+                        .tabItem {
+                            Image(systemName: "gearshape.2.fill")
+                            Text("Settings")
+                        }
+                        .tag(1)
+                }
+                else {
+                    let car = Car.fetchData()!
+                    SettingsView(make: car.make!, model: car.model!, year: Int(car.year), odometer: car.odometer, fuelCapacity: car.fuelCapacity, licensePlate: car.plateNumber!, owner: driver.first!.name!, driverLicense: driver.first!.licenseNumber!)
+                        .tabItem {
+                            Image(systemName: "gearshape.2.fill")
+                            Text("Settings")
+                        }
+                        .tag(1)
+                }
+               
             }
                     
         }

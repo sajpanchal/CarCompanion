@@ -11,19 +11,18 @@ struct DriverDetailsView: View {
     @Binding var owner: String
     @Binding var driverLicense: String
     
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
+    
     var body: some View {
-        Group {
-            AppTitleView(title: "DRIVER DETAILS")
-                .padding(.top, 15)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-            Section("Owner's Full Name") {
-                TextField("Who is the car Owner?", text: $owner)
-            }
-            Section("Driver's License") {
-                TextField("Enter Your Driver's Lincense Number", text: $driverLicense)
-            }
+        VStack {
+           
+            AppSection(value: $owner, title: "OWNER'S FULLNAME", placeholder: "Who is the Owner?")
+           AppSection(value: $driverLicense, title: "DRIVER'S LICENSE", placeholder: "Enter Driver's License Number")
+           
         }
+        .cornerRadius(5)
+        
     }
 }
 

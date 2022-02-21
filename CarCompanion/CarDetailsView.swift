@@ -14,7 +14,7 @@ struct CarDetailsView: View {
     @Binding var odometer: Double
     @Binding var fuelCapacity: Double
     @Binding var licensePlate: String
-    
+    @FocusState var focus: Bool
     var latestYear = { () -> Int in
         let date = Date()
         let calender = Calendar.current
@@ -23,35 +23,27 @@ struct CarDetailsView: View {
         
     }()
     
+    
     var body: some View {
-        Group {
-            AppTitleView(title: "CAR DETAILS")
-                .padding(.top, 20)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-            Section("Make") {
-                TextField("What brand is this car?", text: $make)
-            }
-            Section("Model") {
-                TextField("What model is this car?", text: $model)
-            }
-            Section("Year") {
-                Picker("What year is your car make?", selection: $year) {
-                    ForEach((1900...latestYear).reversed(), id: \.self) {
-                        Text(String($0))
-                    }
-                }
-            }
-            Section("License plate") {
-                TextField("What is the Car License Plate Number", text: $licensePlate)
-            }
-            Section("ODOMETER (in KM)") {
-                TextField("What is your car odometer reading status?", value: $odometer, format: .number)
-            }
-            Section("Fuel Capacity (in Litre)") {
-                TextField("What is the car fuel capacity?", value:$fuelCapacity, format: .number)
-            }
+        VStack {
+            
+        
+            AppSection(value: $make, title: "MAKE", placeholder: "What is the Car Branch?")
+            AppSection(value: $model, title: "MODEL", placeholder: "What is the Car Model")
+            
+            AppSection(value: $licensePlate, title: "LICENSE PLATE #", placeholder: "Car License Plate No.?")
+            AppSectionDouble(value: $odometer, title: "ODOMETER (IN KM)", placeholder: "Car Odometer Standing?")
+            AppSectionDouble(value: $fuelCapacity, title: "FUEL CAPACITY (IN LITRE)", placeholder: "Car Fuel Capacity?")
+            
         }
+        AppPicker(value: $year, title: "YEAR", placeholder: "Year of Car Manufacturing")
+           
+            .listSectionSeparator(.hidden)
+            .listSectionSeparatorTint(Color.clear)
+            .listRowSeparator(.hidden)
+       
+        
+     
     }
 }
 

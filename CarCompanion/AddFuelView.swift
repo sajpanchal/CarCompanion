@@ -12,32 +12,15 @@ struct AddFuelView: View {
        
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
-//@ObservedObject var locationFetcher: LocationFetcher
-    @State var fuelAmount: Double?
+    @State var fuelAmount: Double = 0.0
     
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                Text("ADD FUEL AMOUNT")
-                   .font(.body)
-                   .fontWeight(.semibold)
-                   .foregroundColor(Color.gray)
-                   .frame(height: 40, alignment: .leading)
-                   .padding(.leading, 10)
-                    Spacer()
-                }
-                HStack {
-                    TextField("How much fuel have you filled?", value: $fuelAmount, format: .number)
-                        .padding()
-                        .background(Color.secondary)
-                        .cornerRadius(10)
-                }
-                .padding(.horizontal, 10)
-                .padding(.bottom, 10)
-                .padding(.top, -15)
+                
+                AppSectionDouble(value: $fuelAmount, title: "ADD FUEL AMOUNT", placeholder: "How much fuel have you filled?")
            
                 AppButton(text: "Add Fuel", color: Color.blue, action: {
                     if !carDashboard.isEmpty {
@@ -56,7 +39,7 @@ struct AddFuelView: View {
                    
                     dismiss()
                     
-                }, width: 300, height: 40).disabled(fuelAmount == nil)
+                }, width: 300, height: 40).disabled(fuelAmount == 0.0)
                 Spacer()
             }
             .onAppear(perform: {
@@ -110,7 +93,7 @@ struct AddFuelView: View {
          if carDashboard.isEmpty {
              print("car dashboard is empty.")
              let newEntry = CarDashboard(context: viewContext)
-             newEntry.currentFuel = fuelAmount!
+             newEntry.currentFuel = fuelAmount
              newEntry.currentTravel = 0.0
              newEntry.odometer = 0.0
          }
@@ -118,7 +101,7 @@ struct AddFuelView: View {
              print("reseting car dashboard.")
            /*  print("last travel is: ", carDashboard.first?.currentTravel)
              print("last odometer is: ",carDashboard.first?.odometer )*/
-             carDashboard.first?.currentFuel = fuelAmount!
+             carDashboard.first?.currentFuel = fuelAmount
              carDashboard.first?.currentTravel = 0.0
             
              /*print("current fuel is: ",carDashboard.first?.currentFuel)
@@ -132,3 +115,4 @@ struct AddFuelView_Previews: PreviewProvider {
         AddFuelView()
     }
 }
+
