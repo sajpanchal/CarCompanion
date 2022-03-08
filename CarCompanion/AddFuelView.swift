@@ -20,7 +20,8 @@ struct AddFuelView: View {
         NavigationView {
             VStack {
                 
-                AppSectionDouble(value: $fuelAmount, title: "ADD FUEL AMOUNT", placeholder: "How much fuel have you filled?")
+                AppSectionDouble(value: $fuelAmount, title: "ADD FUEL TO FULLY FILL THE GAS TANK", placeholder: "How much fuel have you filled?")
+                    .padding(.horizontal)
            
                 AppButton(text: "Add Fuel", color: Color.blue, action: {
                     if !carDashboard.isEmpty {
@@ -40,6 +41,11 @@ struct AddFuelView: View {
                     dismiss()
                     
                 }, width: 300, height: 40).disabled(fuelAmount == 0.0)
+                    .padding()
+                Text("Note: In order to calculate the actual fuel consumption, it is assumed that you are filling up the gas in your car up until the gas tank is full.")
+                    .foregroundColor(Color.red)
+                    .multilineTextAlignment(.leading)
+                    .font(.footnote)
                 Spacer()
             }
             .onAppear(perform: {
@@ -77,15 +83,8 @@ struct AddFuelView: View {
         fuelEfficiency.timeStamp = Date()
         fuelEfficiency.carDashboard = carDashboard.first!
 
-       /* print("---car dashboard before updating fuel efficiency-----")
-        print("travel: ", carDashboard.first!.currentTravel)
-        print("fuel: ", carDashboard.first!.currentFuel)
-        print("odometer: ", carDashboard.first!.odometer)*/
         try? viewContext.save()
-       /*print("---car dashboard after updating fuel efficiency-----")
-        print("travel: ", carDashboard.first!.currentTravel)
-        print("fuel: ", carDashboard.first!.currentFuel)
-        print("odometer: ", carDashboard.first!.odometer)*/
+      
     }
     
     func resetCurrentTravel() {
@@ -99,13 +98,12 @@ struct AddFuelView: View {
          }
          else {
              print("reseting car dashboard.")
-           /*  print("last travel is: ", carDashboard.first?.currentTravel)
-             print("last odometer is: ",carDashboard.first?.odometer )*/
+         
+             print("last odometer is: ",carDashboard.first?.odometer)
              carDashboard.first?.currentFuel = fuelAmount
              carDashboard.first?.currentTravel = 0.0
             
-             /*print("current fuel is: ",carDashboard.first?.currentFuel)
-             print("current travel is: ",carDashboard.first?.currentTravel)*/
+           
          }             
      }
 }
