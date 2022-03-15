@@ -11,7 +11,7 @@ import CoreData
 struct AddFuelView: View {
        
     @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @State var fuelAmount: Double = 0.0
     
     @Environment(\.dismiss) var dismiss
@@ -24,7 +24,7 @@ struct AddFuelView: View {
                     .padding(.horizontal)
            
                 AppButton(text: "Add Fuel", color: Color.blue, action: {
-                    if !carDashboard.isEmpty {
+                    if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard != nil {
                         print("updating fuel efficiency!")
                         DispatchQueue.main.async {
                             updateFuelEfficiency()
@@ -53,17 +53,17 @@ struct AddFuelView: View {
                 
            //     locationFetcher.stop()
                 print("-------add fuel view before--------")
-                print("travel: ", carDashboard.first!.currentTravel)
-                print("fuel: ", carDashboard.first!.currentFuel)
-                print("odometer: ", carDashboard.first!.odometer)
+                print("travel: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.currentTravel)
+                print("fuel: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.currentFuel)
+                print("odometer: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.odometer)
             })
             .onDisappear(perform: {
                 print("-------add fuel view after--------")
-                print("travel: ", carDashboard.first!.currentTravel)
-                print("fuel: ", carDashboard.first!.currentFuel)
-                print("odometer: ", carDashboard.first!.odometer)
+                print("travel: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.currentTravel)
+                print("fuel: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.currentFuel)
+                print("odometer: ", driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.odometer)
                 print("---array of fuel Efficiency----")
-                for item in carDashboard.first!.fuelEfficiencyArray {
+                for item in driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.fuelEfficiencyArray {
                     print("travel: ", item.travel)
                     print("fuel: ", item.fuel)
                     print("odometer: ", item.efficiency)
@@ -77,19 +77,22 @@ struct AddFuelView: View {
        
         let fuelEfficiency = FuelEfficiency(context: viewContext)
         
-        fuelEfficiency.fuel = carDashboard.first!.currentFuel
-        fuelEfficiency.travel = carDashboard.first!.currentTravel
-        fuelEfficiency.efficiency = fuelEfficiency.travel/fuelEfficiency.fuel
+        let dashboard = driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!
+        
+        fuelEfficiency.fuel = dashboard.currentFuel
+        fuelEfficiency.travel = dashboard.currentTravel
+        fuelEfficiency.efficiency = dashboard.currentTravel/dashboard.currentFuel
         fuelEfficiency.timeStamp = Date()
-        fuelEfficiency.carDashboard = carDashboard.first!
-
+      
+        driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.addToFuelEfficiency(fuelEfficiency)
+            
         try? viewContext.save()
       
     }
     
     func resetCurrentTravel() {
         
-         if carDashboard.isEmpty {
+         if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard == nil {
              print("car dashboard is empty.")
              let newEntry = CarDashboard(context: viewContext)
              newEntry.currentFuel = fuelAmount
@@ -99,9 +102,9 @@ struct AddFuelView: View {
          else {
              print("reseting car dashboard.")
          
-             print("last odometer is: ",carDashboard.first?.odometer)
-             carDashboard.first?.currentFuel = fuelAmount
-             carDashboard.first?.currentTravel = 0.0
+             print("last odometer is: ",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard!.odometer)
+             driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel = fuelAmount
+             driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentTravel = 0.0
             
            
          }             

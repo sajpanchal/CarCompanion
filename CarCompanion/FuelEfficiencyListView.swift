@@ -9,13 +9,13 @@ import SwiftUI
 
 struct FuelEfficiencyListView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     
     var body: some View {
         List {
                         
-            ForEach(carDashboard.first?.fuelEfficiencyArray ?? [], id: \.self) { fuelEfficiency in
-                if carDashboard.first == nil {
+            ForEach(driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.fuelEfficiencyArray ?? [], id: \.self) { fuelEfficiency in
+                if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard == nil {
                     VStack {
                       Text("No entries found!")
                     }

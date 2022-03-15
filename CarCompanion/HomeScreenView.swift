@@ -13,18 +13,18 @@ struct HomeScreenView: View {
     @Binding var showFuelAlert: Bool
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
-    @ObservedObject var locationFetcher = LocationFetcher()
+//    @ObservedObject var locationFetcher = LocationFetcher()
 
     var body: some View {
         VStack {
             Group {
                 VStack {
                     AppTitleView(title: "DASHBOARD SUMMARY")
-                    SectionView(title: "Odometer Reading", value: locationFetcher.driver?.Cars[locationFetcher.index ?? 0].dashboard?.odometer ?? 0.0, color: .pink)
+                    SectionView(title: "Odometer Reading", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.odometer ?? 0.0, color: .pink)
                     
                     HStack {
-                        SectionView(title: "Current Cycle Travel", value: locationFetcher.driver?.Cars[locationFetcher.index ?? 0].dashboard?.currentTravel ?? 0.0, color: .green)
-                        SectionView(title: "Current Cycle Fuel", value: locationFetcher.driver?.Cars[locationFetcher.index ?? 0].dashboard?.currentFuel ?? 0.0, color: .orange)
+                        SectionView(title: "Current Cycle Travel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentTravel ?? 0.0, color: .green)
+                        SectionView(title: "Current Cycle Fuel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel ?? 0.0, color: .orange)
                     }
                     .padding(.top, 5)
                     
