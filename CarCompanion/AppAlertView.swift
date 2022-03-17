@@ -10,6 +10,7 @@ import SwiftUI
 struct AppAlertView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: CarDashboard.entity(), sortDescriptors: []) var carDashboard: FetchedResults<CarDashboard>
+    @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @State var fuel: Double?
     @Binding var showFuel: Bool
     @Environment(\.colorScheme) var colorScheme
@@ -33,8 +34,9 @@ struct AppAlertView: View {
             HStack {
             
                 AppButton(text: "Add", color: .blue, action: {
-                    carDashboard.first!.currentFuel = fuel!
-                    CarDashboard.saveContext(viewContext: viewContext)
+                    driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel = fuel!
+                    Driver.saveContext(viewContext: viewContext)
+                    showFuel = false
                 }, width: 120, height:30)
                     .disabled(fuel == nil)
                 Divider()

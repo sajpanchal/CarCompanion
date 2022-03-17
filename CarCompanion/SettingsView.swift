@@ -25,8 +25,8 @@ struct SettingsView: View {
     @State var isTapped = false
     @State var owner: String
     @State var driverLicense: String
-    
     @State var addNewVehicle: Bool = false
+ //   @ObservedObject var locationFetcher = LocationFetcher()
     var latestYear = { () -> Int in
         let date = Date()
         let calender = Calendar.current
@@ -77,6 +77,7 @@ struct SettingsView: View {
                             for car in cars {
                                 vehicles.append(car)
                             }
+                          
                         }, width: 300, height: 40)
                     }
                     .padding(.vertical, 20)

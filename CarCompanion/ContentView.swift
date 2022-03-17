@@ -29,31 +29,43 @@ struct ContentView: View {
         else {
             TabView(selection: $selectedTab) {
                 NavigationView {
-                    HomeScreenView(updateOdometer: $updateOdometer, addFuel: $addFuel, showFuelAlert: $showFuelAlert)
-                        .frame(alignment: .top)
-                        .onAppear(perform: {
-                            print("on appear")
-                            locationFetcher.start()
-                            let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
-                            
-                            if currentVehicle == nil {
-                                UserDefaults.standard.set(driver.first!.Cars.first!.plateNumber, forKey: "CurrentVehicle")
-                            }
-                          
-                            /*showFuelAlert = carDashboard.first!.currentFuel == 0.0  ? true  : false*/
-                        })
-                        .onChange(of: scenePhase) { newPhase in
-                            if newPhase == .active {
-                                showFuelAlert = true
-                            }
-                        }
-                        .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
-                        .sheet(isPresented: $addFuel, content: {AddFuelView()})
+                    ZStack {
+                        HomeScreenView(updateOdometer: $updateOdometer, addFuel: $addFuel, showFuelAlert: $showFuelAlert)
+                            .frame(alignment: .top)
+                            .onAppear(perform: {
+                                print("on appear")
+                                locationFetcher.start()
+                                print("Current fuel is:",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel)
+                                let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
+                                
+                                if currentVehicle == nil {
+                                    UserDefaults.standard.set(driver.first!.Cars.first!.plateNumber, forKey: "CurrentVehicle")
+                                }
+                                if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard == nil {
+                                    showFuelAlert = true
+                                    
+                                }
+                                else {
+                                    showFuelAlert = driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0  ? true  : false
+                                }
+                               
+                                
+                                print(showFuelAlert)
+                            })
+                          /*  .onChange(of: scenePhase) { newPhase in
+                                if newPhase == .active {
+                                    showFuelAlert = true
+                                }
+                            }*/
+                            .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
+                            .sheet(isPresented: $addFuel, content: {AddFuelView()})
                         .navigationTitle(Text("Home"))
-                       /* if carDashboard.first!.currentFuel == 0.0 && showFuelAlert {
-                        AppAlertView(showFuel: $showFuelAlert)
-                            .frame(width: 270, height: 200, alignment: .center)
-                        }*/
+                           if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0 && showFuelAlert {
+                               AppAlertView(showFuel: $showFuelAlert)
+                                   .frame(width: 270, height: 200, alignment: .center)
+                               }
+                    }
+                
                         
                 }
                 .tabItem {
