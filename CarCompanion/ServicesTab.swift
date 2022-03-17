@@ -9,7 +9,27 @@ import SwiftUI
 
 struct ServicesTab: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+           VStack{
+                AppButton(text: "Add New Entry", color: .blue, action: {
+                    
+                }, width: 300, height: 40)
+                   .padding(.vertical, 30)
+               
+             AppTitleView(title: "SERVICES/REPAIRS HISTORY")
+               List {
+                   Text("1")
+                   Text("1")
+                   Text("1")
+               }
+                    
+            } .navigationTitle("Services/Repairs")
+               
+        }
+       
+           
+        
+       
     }
 }
 
