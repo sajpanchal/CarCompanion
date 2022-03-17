@@ -37,6 +37,7 @@
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
 		725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */; };
+		726031F227E38F07004A5222 /* ServicesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726031F127E38F07004A5222 /* ServicesTab.swift */; };
 		72948A1627C00F1700E0A53C /* AppSectionDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1527C00F1700E0A53C /* AppSectionDouble.swift */; };
 		72948A1827C00F7500E0A53C /* AppSectionInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1727C00F7500E0A53C /* AppSectionInt.swift */; };
 		72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1927C00FD300E0A53C /* AppSection.swift */; };
@@ -96,6 +97,7 @@
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
+		726031F127E38F07004A5222 /* ServicesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTab.swift; sourceTree = "<group>"; };
 		72948A1527C00F1700E0A53C /* AppSectionDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionDouble.swift; sourceTree = "<group>"; };
 		72948A1727C00F7500E0A53C /* AppSectionInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionInt.swift; sourceTree = "<group>"; };
 		72948A1927C00FD300E0A53C /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		72219EDD2789FE3D00FD53DB /* CarCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				726031F327E38F16004A5222 /* ServicesView */,
 				7221938527971C5D00F121B3 /* Info.plist */,
 				723B7BF227B6C61A0082CDA7 /* SettingsView */,
 				723B7BF527B6C6A10082CDA7 /* HomeScreenView */,
@@ -259,6 +262,14 @@
 				72219EE72789FE3F00FD53DB /* Persistence.swift */,
 			);
 			name = MainFiles;
+			sourceTree = "<group>";
+		};
+		726031F327E38F16004A5222 /* ServicesView */ = {
+			isa = PBXGroup;
+			children = (
+				726031F127E38F07004A5222 /* ServicesTab.swift */,
+			);
+			name = ServicesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +425,7 @@
 				721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */,
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,
 				725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */,
+				726031F227E38F07004A5222 /* ServicesTab.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
 				72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */,
 				72219EEB2789FE3F00FD53DB /* CarCompanion.xcdatamodeld in Sources */,

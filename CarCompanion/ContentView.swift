@@ -73,13 +73,19 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
+                ServicesTab()
+                    .tabItem {
+                        Image(systemName: "hammer.fill")
+                        Text("Services")
+                    }
+                    .tag(1)
                 if driver.first!.Cars.isEmpty {
                     SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
                         .tabItem {
                             Image(systemName: "gearshape.2.fill")
                             Text("Settings")
                         }
-                        .tag(1)
+                        .tag(2)
                 }
                 else {
                     let car = Car.fetchData()!
@@ -88,7 +94,7 @@ struct ContentView: View {
                             Image(systemName: "gearshape.2.fill")
                             Text("Settings")
                         }
-                        .tag(1)
+                        .tag(2)
                 }
                
             }
