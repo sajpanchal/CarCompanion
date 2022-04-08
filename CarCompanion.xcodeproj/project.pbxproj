@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		720361E22799D806008F4832 /* UpdateOdometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720361E12799D806008F4832 /* UpdateOdometer.swift */; };
+		7209B63F2800889000515C05 /* ServiceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7209B63E2800889000515C05 /* ServiceForm.swift */; };
 		720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B4A8A27A1BD32009667DB /* AppAlertView.swift */; };
 		7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2C279B0E3F007BCDC2 /* AppButton.swift */; };
 		7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		720361E12799D806008F4832 /* UpdateOdometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOdometer.swift; sourceTree = "<group>"; };
+		7209B63E2800889000515C05 /* ServiceForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceForm.swift; sourceTree = "<group>"; };
 		720B4A8A27A1BD32009667DB /* AppAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlertView.swift; sourceTree = "<group>"; };
 		7215AF2C279B0E3F007BCDC2 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelView.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				726031F127E38F07004A5222 /* ServicesTab.swift */,
+				7209B63E2800889000515C05 /* ServiceForm.swift */,
 			);
 			name = ServicesView;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				722193822797194900F121B3 /* AppSectionView.swift in Sources */,
 				725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */,
 				721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */,
+				7209B63F2800889000515C05 /* ServiceForm.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
 				721841DB27B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift in Sources */,

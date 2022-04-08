@@ -8,22 +8,33 @@
 import SwiftUI
 
 struct ServicesTab: View {
+    @State var serviceView: Bool = false
     var body: some View {
         NavigationView {
            VStack{
                 AppButton(text: "Add New Entry", color: .blue, action: {
-                    
+                    serviceView = true
                 }, width: 300, height: 40)
                    .padding(.vertical, 30)
+                   
                
              AppTitleView(title: "SERVICES/REPAIRS HISTORY")
-               List {
-                   Text("1")
-                   Text("1")
-                   Text("1")
+               VStack {
+                   List {
+                       Text("1")
+                       Text("1")
+                       Text("1")
+                   }
                }
+               .frame(width: 400, height: 400, alignment: .center)
+               .background(Color.red)
+              
+          
                     
-            } .navigationTitle("Services/Repairs")
+            }
+           .sheet(isPresented: $serviceView) {
+               ServiceForm()
+           }.navigationTitle("Services/Repairs")
                
         }
        
