@@ -19,8 +19,6 @@
 		7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */; };
 		721841CF27B41559002FFAF4 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841CE27B41559002FFAF4 /* CarDetailsView.swift */; };
 		721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D027B415F4002FFAF4 /* DriverDetailsView.swift */; };
-		721841DA27B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */; };
-		721841DB27B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */; };
 		721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */; };
 		721841DD27B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */; };
 		721841DE27B41F9A002FFAF4 /* Driver+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */; };
@@ -40,6 +38,8 @@
 		72219EF52789FE3F00FD53DB /* CarCompanionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EF42789FE3F00FD53DB /* CarCompanionTests.swift */; };
 		72219EFF2789FE3F00FD53DB /* CarCompanionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219EFE2789FE3F00FD53DB /* CarCompanionUITests.swift */; };
 		72219F012789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */; };
+		72320893280479AA00820260 /* CarDashboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */; };
+		72320894280479AA00820260 /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */; };
 		725B43D72801D64900BFCAE4 /* AppSectionMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B43D62801D64900BFCAE4 /* AppSectionMulti.swift */; };
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
@@ -82,8 +82,6 @@
 		7215AF2E279B0F22007BCDC2 /* AddFuelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelView.swift; sourceTree = "<group>"; };
 		721841CE27B41559002FFAF4 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
 		721841D027B415F4002FFAF4 /* DriverDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailsView.swift; sourceTree = "<group>"; };
-		721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataClass.swift"; sourceTree = "<group>"; };
-		721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataClass.swift"; sourceTree = "<group>"; };
 		721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FuelEfficiency+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		72219EFA2789FE3F00FD53DB /* CarCompanionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarCompanionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72219EFE2789FE3F00FD53DB /* CarCompanionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionUITests.swift; sourceTree = "<group>"; };
 		72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		725B43D62801D64900BFCAE4 /* AppSectionMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionMulti.swift; sourceTree = "<group>"; };
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -210,12 +210,12 @@
 		723B7BF127B6C5DF0082CDA7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */,
+				72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */,
 				7207FCB228033487004A7D03 /* ServiceRecords+CoreDataClass.swift */,
 				7207FCB328033487004A7D03 /* ServiceRecords+CoreDataProperties.swift */,
 				7207FCB428033487004A7D03 /* Services+CoreDataClass.swift */,
 				7207FCB528033487004A7D03 /* Services+CoreDataProperties.swift */,
-				721841D227B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift */,
-				721841D327B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift */,
 				721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */,
 				721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */,
 				721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */,
@@ -432,7 +432,7 @@
 				7209B6412800912A00515C05 /* AppDatePicker.swift in Sources */,
 				7207FCB828033487004A7D03 /* Services+CoreDataClass.swift in Sources */,
 				721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */,
-				721841DA27B41F9A002FFAF4 /* CarDashboard+CoreDataClass.swift in Sources */,
+				72320894280479AA00820260 /* CarDashboard+CoreDataProperties.swift in Sources */,
 				7215AF2F279B0F22007BCDC2 /* AddFuelView.swift in Sources */,
 				72E1311527B5719F008F1FDA /* VehicleSelectionView.swift in Sources */,
 				721841DD27B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift in Sources */,
@@ -449,10 +449,10 @@
 				7209B63F2800889000515C05 /* ServiceForm.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
-				721841DB27B41F9A002FFAF4 /* CarDashboard+CoreDataProperties.swift in Sources */,
 				721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */,
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,
 				725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */,
+				72320893280479AA00820260 /* CarDashboard+CoreDataClass.swift in Sources */,
 				726031F227E38F07004A5222 /* ServicesTab.swift in Sources */,
 				72219EDF2789FE3D00FD53DB /* CarCompanionApp.swift in Sources */,
 				72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */,

@@ -40,6 +40,7 @@ struct AppSectionMulti: View {
             Button("Add", action: {
                 action()
             })
+                .disabled(value.isEmpty || cost == 0)
         }
         .padding(.horizontal, 0)
         .padding(.bottom, 10)

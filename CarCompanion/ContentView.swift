@@ -35,7 +35,7 @@ struct ContentView: View {
                             .onAppear(perform: {
                                 print("on appear")
                                 locationFetcher.start()
-                                print("Current fuel is:",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel)
+                                print("Current fuel is:",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel ?? 0.0)
                                 let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
                                 
                                 if currentVehicle == nil {
