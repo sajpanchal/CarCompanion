@@ -19,17 +19,42 @@ struct ServicesTab: View {
                 AppButton(text: "Add New Entry", color: .blue, action: {
                     serviceView = true
                 }, width: 300, height: 40)
-                   .padding(.vertical, 30)
-                                  
-             AppTitleView(title: "SERVICES/REPAIRS HISTORY")
+                   .padding(.vertical, 30)          
+               AppTitleView(title: "SERVICES/REPAIRS HISTORY", font: .title3, weight: .semibold, color: .gray)
                VStack {
                    List {
                        ForEach(driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.serviceRecordsArray ?? [], id: \.self) { serviceRecord in
-                           HStack {
-                               Text(serviceRecord.shopName!)
+                           VStack {
+                               HStack {
+                                   VStack {
+                                       Text("Location")
+                                           .font(.system(size: 14, weight: .semibold, design: .default))
+                                           .foregroundColor(.gray)
+                                       Text(serviceRecord.shopName!)
+                                           .font(.subheadline)
+                                           .fontWeight(.bold)
+                                           .foregroundColor(.blue)
+                                   }
+                                 
+                                   Spacer()
+                                   VStack {
+                                       Text("Total Cost")
+                                           .font(.system(size: 14, weight: .semibold, design: .default))
+                                           .foregroundColor(.gray)
+                                       Text(serviceRecord.totalCost, format: .currency(code: Locale.current.currencyCode!))
+                                           .font(.subheadline)
+                                           .fontWeight(.bold)
+                                           .foregroundColor(.red)
+                                   }
+                                  
+                               }
                                Spacer()
-                               Text(serviceRecord.totalCost, format: .currency(code: Locale.current.currencyCode!))
+                               Text(serviceRecord.DateOfService)
+                                   .font(.caption2)
+                                   .fontWeight(.light)
+                                   .foregroundColor(.gray)
                            }
+                           
                            
                        }
                    }

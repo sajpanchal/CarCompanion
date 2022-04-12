@@ -22,7 +22,7 @@ struct AppDatePicker: View {
             }
             .frame(height: 5)
             .padding(.top, 20)
-            DatePicker("When did you do this service?", selection: $dateOfService, displayedComponents: .date)
+            DatePicker("Select Date", selection: $dateOfService, displayedComponents: .date)
                 .foregroundColor(.gray)            
             .padding(.vertical,5)
         }

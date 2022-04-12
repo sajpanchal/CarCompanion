@@ -22,6 +22,12 @@ extension ServiceRecords {
     @NSManaged public var carDashboard: CarDashboard?
     @NSManaged public var services: NSSet?
 
+    public var DateOfService: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .long
+       return formatter.string(from: dateOfService!)
+    }
 }
 
 // MARK: Generated accessors for services

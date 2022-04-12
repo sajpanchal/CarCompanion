@@ -19,7 +19,7 @@ struct HomeScreenView: View {
         VStack {
             Group {
                 VStack {
-                    AppTitleView(title: "DASHBOARD SUMMARY")
+                    AppTitleView(title: "DASHBOARD SUMMARY", font: .title3, weight: .semibold, color: .gray)
                     SectionView(title: "Odometer Reading", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.odometer ?? 0.0, color: .pink)
                     
                     HStack {
@@ -37,8 +37,9 @@ struct HomeScreenView: View {
                 }
                 .padding(5)
             }
-            Spacer()
-            AppTitleView(title: "FUEL EFFICIENCY HISTORY")
+            Spacer()           
+            AppTitleView(title: "FUEL EFFICIENCY HISTORY", font: .title3, weight: .semibold, color: .gray)
+            
             FuelEfficiencyListView()
         }
     }

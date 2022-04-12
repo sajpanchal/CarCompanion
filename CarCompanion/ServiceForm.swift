@@ -21,47 +21,52 @@ struct ServiceForm: View {
     @State var totalCost: Double = 0.0
     @State var services: [Services] = []
     var body: some View {
+
         NavigationView {
-            VStack {
-                AppSection(value: $shopName, title: "SERVICE LOCATION", placeholder: "Enter The Auto Shop Name")
-                AppDatePicker(title: "DATE OF SERVICE", dateOfService: $dateOfService)
-                AppSectionDouble(value: $totalCost, title: "TOTAL COST", placeholder: "Enter Total Service Cost")
-                AppSectionMulti(value: $serviceName, cost:$cost, title: "ADD SERVICE RECORD", placeholder1: "Description", placeholder2: "Cost") {
-                    if !serviceName.isEmpty && cost != 0 {
-                        let service = Services(context: viewContext)
-                        service.desc = serviceName
-                        service.cost = cost
-                       
+            
+            ScrollView(.vertical) {
+                VStack {
+                    
+                    AppSection(value: $shopName, title: "SERVICE LOCATION", placeholder: "Enter The Auto Shop Name")
+                    AppDatePicker(title: "DATE OF SERVICE", dateOfService: $dateOfService)
+                    AppSectionDouble(value: $totalCost, title: "TOTAL COST", placeholder: "Enter Total Service Cost")
+                    AppSectionMulti(value: $serviceName, cost:$cost, title: "ADD SERVICE RECORD", placeholder1: "Description", placeholder2: "Cost") {
+                        if !serviceName.isEmpty && cost != 0 {
+                            let service = Services(context: viewContext)
+                            service.desc = serviceName
+                            service.cost = cost
                             services.append(service)
-                        
-                    }
-                    
-                    
-                }
-                List {
-                    ForEach(services) { service in
-                        HStack {
-                            Text(service.desc!)
-                            Spacer()
-                            Text(service.cost, format: .currency(code: Locale.current.currencyCode!))
                         }
                     }
+                    
+                    List {
+                        ForEach(services) { service in
+                            HStack {
+                                Text(service.desc!)
+                                Spacer()
+                                Text(service.cost, format: .currency(code: Locale.current.currencyCode!))
+                            }
+                        }
+                    }
+                    .frame(height: 250, alignment: .center)
                 }
+                .navigationBarTitle("Service Record")
+                .frame(alignment: .top)
+                .padding()
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        Button("Discard", action: {
+                            dismiss()
+                        })
+                    }
+                    ToolbarItem(placement: .bottomBar) {
+                        Button("Save", action: {
+                            saveServiceRecord()
+                            dismiss()
+                        })
+                            .disabled(shopName.isEmpty ||  totalCost == 0 || services.isEmpty)
+                    }
             }
-            .padding()
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button("Discard", action: {
-                        dismiss()
-                    })
-                }
-                ToolbarItem(placement: .bottomBar) {
-                    Button("Save", action: {
-                        saveServiceRecord()
-                        dismiss()
-                    })
-                        .disabled(shopName.isEmpty ||  totalCost == 0 || services.isEmpty)
-                }
             }
         }
     }

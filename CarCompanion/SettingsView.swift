@@ -42,14 +42,13 @@ struct SettingsView: View {
                     if !cars.isEmpty && !driver.isEmpty {
                         VehicleSelectionView(vehicles: $vehicles, vehicle: $vehicle)
                     }
-                    AppTitleView(title: "CAR DETAILS")
+                    AppTitleView(title: "CAR DETAILS", font: .title3, weight: .semibold, color: .gray)
                         .padding(.top, 20)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                     
                     CarDetailsView(make: $make, model: $model, year: $year, odometer: $odometer, fuelCapacity: $fuelCapacity, licensePlate: $licensePlate)
-                    
-                    AppTitleView(title: "DRIVER DETAILS")
+                    AppTitleView(title: "DRIVER DETAILS", font: .title3, weight: .semibold, color: .gray)                    
                         .padding(.top, 15)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())

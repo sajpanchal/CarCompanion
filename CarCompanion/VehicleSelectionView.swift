@@ -13,7 +13,8 @@ struct VehicleSelectionView: View {
     var body: some View {
         
         Group {
-            AppTitleView(title: "SELECTED VEHICLE")
+         
+            AppTitleView(title: "SELECTED VEHICLE", font: .title3, weight: .semibold, color: Color.gray)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             if !vehicles.isEmpty {
