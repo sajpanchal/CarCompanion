@@ -16,32 +16,38 @@ struct HomeScreenView: View {
 //    @ObservedObject var locationFetcher = LocationFetcher()
 
     var body: some View {
-        VStack {
-            Group {
-                VStack {
-                    AppTitleView(title: "DASHBOARD SUMMARY", font: .title3, weight: .semibold, color: .gray)
-                    SectionView(title: "Odometer Reading", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.odometer ?? 0.0, color: .pink)
-                    
-                    HStack {
-                        SectionView(title: "Current Cycle Travel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentTravel ?? 0.0, color: .green)
-                        SectionView(title: "Current Cycle Fuel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel ?? 0.0, color: .orange)
+        ScrollView(.vertical) {
+            VStack {
+                Group {
+                    VStack {
+                        AppTitleView(title: "DASHBOARD SUMMARY", font: .title3, weight: .semibold, color: .gray)
+                        SectionView(title: "Odometer Reading", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.odometer ?? 0.0, color: .pink)
+                        
+                        HStack {
+                            SectionView(title: "Current Cycle Travel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentTravel ?? 0.0, color: .green)
+                            SectionView(title: "Current Cycle Fuel", value: driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel ?? 0.0, color: .orange)
+                        }
+                        .padding(.top, 5)
+                        
+                        AppButton(text: "Filling fuel? Tap it!", color: Color.blue, action: {
+                            addFuel = true
+                        }, width: 300, height: 40)
+                            .padding(.horizontal, 15)
+                        AppButton(text: "Update odometer", color: Color.blue, action: {
+                            updateOdometer = true
+                        }, width: 300, height: 40)
+                            .padding(.horizontal, 15)
                     }
-                    .padding(.top, 5)
-                    
-                    AppButton(text: "Filling fuel? Tap it!", color: Color.blue, action: {
-                        addFuel = true
-                    }, width: 300, height: 40)
-                    AppButton(text: "Update odometer", color: Color.blue, action: {
-                        updateOdometer = true
-                    }, width: 300, height: 40)
+                    .padding(5)
                 }
-                .padding(5)
+                Spacer()
+                AppTitleView(title: "FUEL EFFICIENCY HISTORY", font: .title3, weight: .semibold, color: .gray)
+                
+                FuelEfficiencyListView()
+                    .frame( height: 300)
             }
-            Spacer()           
-            AppTitleView(title: "FUEL EFFICIENCY HISTORY", font: .title3, weight: .semibold, color: .gray)
-            
-            FuelEfficiencyListView()
         }
+        
     }
 }
     

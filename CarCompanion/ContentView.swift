@@ -25,7 +25,6 @@ struct ContentView: View {
         if driver.first == nil {
             SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
         }
-        
         else {
             TabView(selection: $selectedTab) {
                 NavigationView {
@@ -48,25 +47,16 @@ struct ContentView: View {
                                 else {
                                     showFuelAlert = driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0  ? true  : false
                                 }
-                               
-                                
                                 print(showFuelAlert)
                             })
-                          /*  .onChange(of: scenePhase) { newPhase in
-                                if newPhase == .active {
-                                    showFuelAlert = true
-                                }
-                            }*/
                             .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
                             .sheet(isPresented: $addFuel, content: {AddFuelView()})
-                        .navigationTitle(Text("Home"))
+                            .navigationTitle(Text("Home"))
                            if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0 && showFuelAlert {
                                AppAlertView(showFuel: $showFuelAlert)
                                    .frame(width: 270, height: 200, alignment: .center)
                                }
                     }
-                
-                        
                 }
                 .tabItem {
                     Image(systemName:"house")
@@ -100,8 +90,8 @@ struct ContentView: View {
             }
                     
         }
-        }
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ServiceForm: View {
     @Environment(\.dismiss) var dismiss
-    
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
@@ -23,10 +22,8 @@ struct ServiceForm: View {
     var body: some View {
 
         NavigationView {
-            
             ScrollView(.vertical) {
                 VStack {
-                    
                     AppSection(value: $shopName, title: "SERVICE LOCATION", placeholder: "Enter The Auto Shop Name")
                     AppDatePicker(title: "DATE OF SERVICE", dateOfService: $dateOfService)
                     AppSectionDouble(value: $totalCost, title: "TOTAL COST", placeholder: "Enter Total Service Cost")
@@ -38,7 +35,6 @@ struct ServiceForm: View {
                             services.append(service)
                         }
                     }
-                    
                     List {
                         ForEach(services) { service in
                             HStack {
@@ -56,8 +52,10 @@ struct ServiceForm: View {
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button("Discard", action: {
-                            dismiss()
+                            resetForm()
+                           
                         })
+                            .disabled(shopName.isEmpty && totalCost == 0 && services.isEmpty)
                     }
                     ToolbarItem(placement: .bottomBar) {
                         Button("Save", action: {
@@ -66,10 +64,16 @@ struct ServiceForm: View {
                         })
                             .disabled(shopName.isEmpty ||  totalCost == 0 || services.isEmpty)
                     }
-            }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button ("Close", action: {
+                            dismiss()
+                        })
+                    }
+                }
             }
         }
     }
+    
     func saveServiceRecord() {
         if !driver.isEmpty && !cars.isEmpty {
             let value = UserDefaults.standard.string(forKey: "CurrentVehicle")
@@ -82,12 +86,19 @@ struct ServiceForm: View {
                 for service in services {
                     serviceRecord.addToServices(service)
                 }
-                                               
                 driver.first!.Cars.first(where: {$0.plateNumber == value})!.dashboard?.addToServiceRecords(serviceRecord)
-                
                 Driver.saveContext(viewContext: viewContext)
             }
         }
+    }
+    
+    func resetForm() {
+        shopName = ""
+        dateOfService = Date()
+        serviceName = ""
+        cost = 0.0
+        totalCost = 0.0
+        services = []
     }
 }
 

@@ -19,7 +19,8 @@ struct ServicesTab: View {
                 AppButton(text: "Add New Entry", color: .blue, action: {
                     serviceView = true
                 }, width: 300, height: 40)
-                   .padding(.vertical, 30)          
+                   .padding(.top, 30)
+                   .padding(.horizontal, 15)
                AppTitleView(title: "SERVICES/REPAIRS HISTORY", font: .title3, weight: .semibold, color: .gray)
                VStack {
                    List {
@@ -34,8 +35,7 @@ struct ServicesTab: View {
                                            .font(.subheadline)
                                            .fontWeight(.bold)
                                            .foregroundColor(.blue)
-                                   }
-                                 
+                                   }                                 
                                    Spacer()
                                    VStack {
                                        Text("Total Cost")
@@ -46,7 +46,6 @@ struct ServicesTab: View {
                                            .fontWeight(.bold)
                                            .foregroundColor(.red)
                                    }
-                                  
                                }
                                Spacer()
                                Text(serviceRecord.DateOfService)
@@ -54,8 +53,6 @@ struct ServicesTab: View {
                                    .fontWeight(.light)
                                    .foregroundColor(.gray)
                            }
-                           
-                           
                        }
                    }
                }
