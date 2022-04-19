@@ -25,7 +25,10 @@ struct ServicesTab: View {
                VStack {
                    List {
                        ForEach(driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.serviceRecordsArray ?? [], id: \.self) { serviceRecord in
-                           ServiceRecordsList(serviceRecord: serviceRecord)
+                           NavigationLink(destination: ServiceForm( shopName: serviceRecord.shopName!, dateOfService: serviceRecord.dateOfService!, serviceName: "", cost: 0.0, totalCost: serviceRecord.totalCost, services: serviceRecord.servicesArray), label: {
+                               ServiceRecordsList(serviceRecord: serviceRecord)
+                           } )
+                          
                        }
                    }
                }

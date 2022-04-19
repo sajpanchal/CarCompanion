@@ -21,6 +21,13 @@ extension ServiceRecords {
     @NSManaged public var totalCost: Double
     @NSManaged public var carDashboard: CarDashboard?
     @NSManaged public var services: NSSet?
+    
+    public var servicesArray: [Services] {
+        let set = services as? Set<Services> ?? []
+        return set.sorted {
+            $0.desc! > $1.desc!
+        }
+    }
 
     public var DateOfService: String {
         let formatter = DateFormatter()
