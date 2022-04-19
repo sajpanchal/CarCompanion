@@ -25,34 +25,7 @@ struct ServicesTab: View {
                VStack {
                    List {
                        ForEach(driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.serviceRecordsArray ?? [], id: \.self) { serviceRecord in
-                           VStack {
-                               HStack {
-                                   VStack {
-                                       Text("Location")
-                                           .font(.system(size: 14, weight: .semibold, design: .default))
-                                           .foregroundColor(.gray)
-                                       Text(serviceRecord.shopName!)
-                                           .font(.subheadline)
-                                           .fontWeight(.bold)
-                                           .foregroundColor(.blue)
-                                   }                                 
-                                   Spacer()
-                                   VStack {
-                                       Text("Total Cost")
-                                           .font(.system(size: 14, weight: .semibold, design: .default))
-                                           .foregroundColor(.gray)
-                                       Text(serviceRecord.totalCost, format: .currency(code: Locale.current.currencyCode!))
-                                           .font(.subheadline)
-                                           .fontWeight(.bold)
-                                           .foregroundColor(.red)
-                                   }
-                               }
-                               Spacer()
-                               Text(serviceRecord.DateOfService)
-                                   .font(.caption2)
-                                   .fontWeight(.light)
-                                   .foregroundColor(.gray)
-                           }
+                           ServiceRecordsList(serviceRecord: serviceRecord)
                        }
                    }
                }
@@ -74,3 +47,4 @@ struct ServicesTab_Previews: PreviewProvider {
         ServicesTab()
     }
 }
+

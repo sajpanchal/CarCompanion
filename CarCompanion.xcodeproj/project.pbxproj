@@ -45,6 +45,7 @@
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
 		725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */; };
 		726031F227E38F07004A5222 /* ServicesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726031F127E38F07004A5222 /* ServicesTab.swift */; };
+		72813442280F03FD000CDEB3 /* ServiceRecordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72813441280F03FD000CDEB3 /* ServiceRecordsList.swift */; };
 		72948A1627C00F1700E0A53C /* AppSectionDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1527C00F1700E0A53C /* AppSectionDouble.swift */; };
 		72948A1827C00F7500E0A53C /* AppSectionInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1727C00F7500E0A53C /* AppSectionInt.swift */; };
 		72948A1A27C00FD300E0A53C /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72948A1927C00FD300E0A53C /* AppSection.swift */; };
@@ -112,6 +113,7 @@
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		725F5AF527B2F1FB00E2E96A /* AppTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleView.swift; sourceTree = "<group>"; };
 		726031F127E38F07004A5222 /* ServicesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTab.swift; sourceTree = "<group>"; };
+		72813441280F03FD000CDEB3 /* ServiceRecordsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRecordsList.swift; sourceTree = "<group>"; };
 		72948A1527C00F1700E0A53C /* AppSectionDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionDouble.swift; sourceTree = "<group>"; };
 		72948A1727C00F7500E0A53C /* AppSectionInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionInt.swift; sourceTree = "<group>"; };
 		72948A1927C00FD300E0A53C /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		72219ED22789FE3D00FD53DB = {
 			isa = PBXGroup;
 			children = (
+				72813441280F03FD000CDEB3 /* ServiceRecordsList.swift */,
 				723B7BF127B6C5DF0082CDA7 /* Model */,
 				72219EDD2789FE3D00FD53DB /* CarCompanion */,
 				72219EF32789FE3F00FD53DB /* CarCompanionTests */,
@@ -449,6 +452,7 @@
 				7209B63F2800889000515C05 /* ServiceForm.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,
+				72813442280F03FD000CDEB3 /* ServiceRecordsList.swift in Sources */,
 				721841E127B41F9A002FFAF4 /* Car+CoreDataProperties.swift in Sources */,
 				725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */,
 				725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */,
