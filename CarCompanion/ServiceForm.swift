@@ -33,6 +33,8 @@ struct ServiceForm: View {
                             service.desc = serviceName
                             service.cost = cost
                             services.append(service)
+                            serviceName = ""
+                            cost = 0.0
                         }
                     }
                     List {
@@ -43,7 +45,9 @@ struct ServiceForm: View {
                                 Text(service.cost, format: .currency(code: Locale.current.currencyCode!))
                             }
                         }
+                        .onDelete(perform: deleteService)
                     }
+                    
                     .frame(height: 250, alignment: .center)
                 }
                 .navigationBarTitle("Service Record")
@@ -73,7 +77,11 @@ struct ServiceForm: View {
             }
         }
     }
-    
+    func deleteService(at offsets: IndexSet) {
+        for offset in offsets {
+            services.remove(at: offset)
+        }
+    }
     func saveServiceRecord() {
         if !driver.isEmpty && !cars.isEmpty {
             let value = UserDefaults.standard.string(forKey: "CurrentVehicle")
