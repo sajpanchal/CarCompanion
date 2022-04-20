@@ -16,11 +16,19 @@ struct ServicesTab: View {
     var body: some View {
         NavigationView {
            VStack {
-                AppButton(text: "Add New Entry", color: .blue, action: {
+               NavigationLink(destination: ServiceForm( shopName: "", dateOfService: Date() , serviceName: "", cost: 0.0, totalCost: 0.0, services: []), label: {
+                  Text("Add New Entry")
+                       .frame(width: 300, height: 40, alignment: .center)
+                      
+               })
+                 //  .frame(width: 300, height: 40, alignment: .center)
+                   .background(Color.blue)
+                   .cornerRadius(100)
+            /*    AppButton(text: "Add New Entry", color: .blue, action: {
                     serviceView = true
                 }, width: 300, height: 40)
                    .padding(.top, 30)
-                   .padding(.horizontal, 15)
+                   .padding(.horizontal, 15)*/
                AppTitleView(title: "SERVICES/REPAIRS HISTORY", font: .title3, weight: .semibold, color: .gray)
                VStack {
                    List {

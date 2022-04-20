@@ -21,7 +21,7 @@ struct ServiceForm: View {
     @State var services: [Services] = []
     var body: some View {
 
-        NavigationView {
+     
             ScrollView(.vertical) {
                 VStack {
                     AppSection(value: $shopName, title: "SERVICE LOCATION", placeholder: "Enter The Auto Shop Name")
@@ -68,14 +68,10 @@ struct ServiceForm: View {
                         })
                             .disabled(shopName.isEmpty ||  totalCost == 0 || services.isEmpty)
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button ("Close", action: {
-                            dismiss()
-                        })
-                    }
+                    
                 }
             }
-        }
+        
     }
     func deleteService(at offsets: IndexSet) {
         for offset in offsets {
