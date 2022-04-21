@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		720361E22799D806008F4832 /* UpdateOdometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720361E12799D806008F4832 /* UpdateOdometer.swift */; };
-		7207FCB628033487004A7D03 /* ServiceRecords+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7207FCB228033487004A7D03 /* ServiceRecords+CoreDataClass.swift */; };
-		7207FCB728033487004A7D03 /* ServiceRecords+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7207FCB328033487004A7D03 /* ServiceRecords+CoreDataProperties.swift */; };
 		7207FCB828033487004A7D03 /* Services+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7207FCB428033487004A7D03 /* Services+CoreDataClass.swift */; };
 		7207FCB928033487004A7D03 /* Services+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7207FCB528033487004A7D03 /* Services+CoreDataProperties.swift */; };
 		7209B63F2800889000515C05 /* ServiceForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7209B63E2800889000515C05 /* ServiceForm.swift */; };
@@ -40,6 +38,8 @@
 		72219F012789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */; };
 		72320893280479AA00820260 /* CarDashboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */; };
 		72320894280479AA00820260 /* CarDashboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */; };
+		7240D3032811ACA500E66B02 /* ServiceRecords+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240D3012811ACA500E66B02 /* ServiceRecords+CoreDataClass.swift */; };
+		7240D3042811ACA500E66B02 /* ServiceRecords+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7240D3022811ACA500E66B02 /* ServiceRecords+CoreDataProperties.swift */; };
 		725B43D72801D64900BFCAE4 /* AppSectionMulti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725B43D62801D64900BFCAE4 /* AppSectionMulti.swift */; };
 		725F5AF227B2C79C00E2E96A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF127B2C79C00E2E96A /* SettingsView.swift */; };
 		725F5AF427B2DE9000E2E96A /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */; };
@@ -72,8 +72,6 @@
 
 /* Begin PBXFileReference section */
 		720361E12799D806008F4832 /* UpdateOdometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOdometer.swift; sourceTree = "<group>"; };
-		7207FCB228033487004A7D03 /* ServiceRecords+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceRecords+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7207FCB328033487004A7D03 /* ServiceRecords+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceRecords+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7207FCB428033487004A7D03 /* Services+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7207FCB528033487004A7D03 /* Services+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Services+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7209B63E2800889000515C05 /* ServiceForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceForm.swift; sourceTree = "<group>"; };
@@ -108,6 +106,8 @@
 		72219F002789FE3F00FD53DB /* CarCompanionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCompanionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CarDashboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7240D3012811ACA500E66B02 /* ServiceRecords+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceRecords+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7240D3022811ACA500E66B02 /* ServiceRecords+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceRecords+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		725B43D62801D64900BFCAE4 /* AppSectionMulti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSectionMulti.swift; sourceTree = "<group>"; };
 		725F5AF127B2C79C00E2E96A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		725F5AF327B2DE9000E2E96A /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -215,10 +215,10 @@
 			children = (
 				72320891280479AA00820260 /* CarDashboard+CoreDataClass.swift */,
 				72320892280479AA00820260 /* CarDashboard+CoreDataProperties.swift */,
-				7207FCB228033487004A7D03 /* ServiceRecords+CoreDataClass.swift */,
-				7207FCB328033487004A7D03 /* ServiceRecords+CoreDataProperties.swift */,
 				7207FCB428033487004A7D03 /* Services+CoreDataClass.swift */,
 				7207FCB528033487004A7D03 /* Services+CoreDataProperties.swift */,
+				7240D3012811ACA500E66B02 /* ServiceRecords+CoreDataClass.swift */,
+				7240D3022811ACA500E66B02 /* ServiceRecords+CoreDataProperties.swift */,
 				721841D427B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift */,
 				721841D527B41F9A002FFAF4 /* FuelEfficiency+CoreDataProperties.swift */,
 				721841D627B41F9A002FFAF4 /* Driver+CoreDataClass.swift */,
@@ -428,11 +428,13 @@
 			files = (
 				7215AF2D279B0E3F007BCDC2 /* AppButton.swift in Sources */,
 				72948A1827C00F7500E0A53C /* AppSectionInt.swift in Sources */,
+				7240D3032811ACA500E66B02 /* ServiceRecords+CoreDataClass.swift in Sources */,
 				72219EE82789FE3F00FD53DB /* Persistence.swift in Sources */,
 				725B43D72801D64900BFCAE4 /* AppSectionMulti.swift in Sources */,
 				72219EE12789FE3D00FD53DB /* ContentView.swift in Sources */,
 				7207FCB928033487004A7D03 /* Services+CoreDataProperties.swift in Sources */,
 				7209B6412800912A00515C05 /* AppDatePicker.swift in Sources */,
+				7240D3042811ACA500E66B02 /* ServiceRecords+CoreDataProperties.swift in Sources */,
 				7207FCB828033487004A7D03 /* Services+CoreDataClass.swift in Sources */,
 				721841D127B415F4002FFAF4 /* DriverDetailsView.swift in Sources */,
 				72320894280479AA00820260 /* CarDashboard+CoreDataProperties.swift in Sources */,
@@ -447,8 +449,6 @@
 				722193822797194900F121B3 /* AppSectionView.swift in Sources */,
 				725F5AF627B2F1FB00E2E96A /* AppTitleView.swift in Sources */,
 				721841DC27B41F9A002FFAF4 /* FuelEfficiency+CoreDataClass.swift in Sources */,
-				7207FCB628033487004A7D03 /* ServiceRecords+CoreDataClass.swift in Sources */,
-				7207FCB728033487004A7D03 /* ServiceRecords+CoreDataProperties.swift in Sources */,
 				7209B63F2800889000515C05 /* ServiceForm.swift in Sources */,
 				72219384279719BB00F121B3 /* LocationFetcher.swift in Sources */,
 				720B4A8B27A1BD32009667DB /* AppAlertView.swift in Sources */,

@@ -39,7 +39,7 @@ extension Driver {
     static func saveContext(viewContext: NSManagedObjectContext) {
         do {
             try viewContext.save()
-            print("car dashboard updated!")
+        //    print("car dashboard updated!")
         }
         catch {
             print("save failed")

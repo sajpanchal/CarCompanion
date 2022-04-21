@@ -2,7 +2,7 @@
 //  ServiceRecords+CoreDataProperties.swift
 //  CarCompanion
 //
-//  Created by saj panchal on 2022-04-10.
+//  Created by saj panchal on 2022-04-21.
 //
 //
 
@@ -19,6 +19,7 @@ extension ServiceRecords {
     @NSManaged public var dateOfService: Date?
     @NSManaged public var shopName: String?
     @NSManaged public var totalCost: Double
+    @NSManaged public var uniqueID: UUID?
     @NSManaged public var carDashboard: CarDashboard?
     @NSManaged public var services: NSSet?
     
@@ -35,6 +36,11 @@ extension ServiceRecords {
         formatter.timeStyle = .long
        return formatter.string(from: dateOfService!)
     }
+    
+    public var UniqueID: UUID {
+        return uniqueID ?? UUID()
+    }
+
 }
 
 // MARK: Generated accessors for services

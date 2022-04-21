@@ -12,13 +12,14 @@ struct ServiceForm: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
-    
+    var serviceRecord: ServiceRecords?
     @State var shopName: String = ""
     @State var dateOfService: Date = Date()
     @State var serviceName: String = ""
     @State var cost: Double = 0.0
     @State var totalCost: Double = 0.0
     @State var services: [Services] = []
+    var uniqueid: UUID
     var body: some View {
 
      
@@ -83,14 +84,31 @@ struct ServiceForm: View {
             let value = UserDefaults.standard.string(forKey: "CurrentVehicle")
             let vehicle = driver.first!.Cars.first(where: {$0.plateNumber == value})!
             if let dashboard = vehicle.dashboard {
-                let serviceRecord = ServiceRecords(context: viewContext)
-                serviceRecord.shopName = shopName
-                serviceRecord.dateOfService = dateOfService
-                serviceRecord.totalCost = totalCost
-                for service in services {
-                    serviceRecord.addToServices(service)
+              
+          
+                if let serviceRecord = dashboard.serviceRecordsArray.first(where: { record in record.uniqueID == uniqueid}) {
+                    print("existing service record found.")
+                    serviceRecord.shopName = shopName
+                    serviceRecord.dateOfService = dateOfService
+                    serviceRecord.totalCost = totalCost
+                    serviceRecord.services = nil
+                    for service in services {
+                        serviceRecord.addToServices(service)
+                    }
+                    Driver.saveContext(viewContext: viewContext)
                 }
-                driver.first!.Cars.first(where: {$0.plateNumber == value})!.dashboard?.addToServiceRecords(serviceRecord)
+                else {
+                    print("new service record found.")
+                    let serviceRecord = ServiceRecords(context: viewContext)
+                    serviceRecord.shopName = shopName
+                    serviceRecord.dateOfService = dateOfService
+                    serviceRecord.totalCost = totalCost
+                    for service in services {
+                        serviceRecord.addToServices(service)
+                    }
+                    driver.first!.Cars.first(where: {$0.plateNumber == value})!.dashboard?.addToServiceRecords(serviceRecord)
+                }
+                
                 Driver.saveContext(viewContext: viewContext)
             }
         }
@@ -108,6 +126,6 @@ struct ServiceForm: View {
 
 struct ServiceForm_Previews: PreviewProvider {
     static var previews: some View {
-        ServiceForm()
+        ServiceForm(uniqueid: UUID())
     }
 }
