@@ -17,6 +17,7 @@
         <attribute name="odometer" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="dashboard" inverseEntity="Car"/>
         <relationship name="fuelEfficiency" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FuelEfficiency" inverseName="carDashboard" inverseEntity="FuelEfficiency"/>
+        <relationship name="serviceRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ServiceRecords" inverseName="carDashboard" inverseEntity="ServiceRecords"/>
     </entity>
     <entity name="Driver" representedClassName="Driver" syncable="YES">
         <attribute name="licenseNumber" optional="YES" attributeType="String"/>
@@ -30,10 +31,25 @@
         <attribute name="travel" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="carDashboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarDashboard" inverseName="fuelEfficiency" inverseEntity="CarDashboard"/>
     </entity>
+    <entity name="ServiceRecords" representedClassName="ServiceRecords" syncable="YES">
+        <attribute name="dateOfService" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="shopName" optional="YES" attributeType="String"/>
+        <attribute name="totalCost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="uniqueID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="carDashboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CarDashboard" inverseName="serviceRecords" inverseEntity="CarDashboard"/>
+        <relationship name="services" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Services" inverseName="serviceRecords" inverseEntity="Services"/>
+    </entity>
+    <entity name="Services" representedClassName="Services" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <relationship name="serviceRecords" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ServiceRecords" inverseName="services" inverseEntity="ServiceRecords"/>
+    </entity>
     <elements>
         <element name="Car" positionX="-54" positionY="45" width="128" height="164"/>
-        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="CarDashboard" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="Driver" positionX="-45" positionY="54" width="128" height="74"/>
         <element name="FuelEfficiency" positionX="-63" positionY="9" width="128" height="104"/>
+        <element name="ServiceRecords" positionX="-54" positionY="90" width="128" height="119"/>
+        <element name="Services" positionX="-45" positionY="99" width="128" height="74"/>
     </elements>
 </model>

@@ -25,7 +25,6 @@ struct ContentView: View {
         if driver.first == nil {
             SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
         }
-        
         else {
             TabView(selection: $selectedTab) {
                 NavigationView {
@@ -35,7 +34,7 @@ struct ContentView: View {
                             .onAppear(perform: {
                                 print("on appear")
                                 locationFetcher.start()
-                                print("Current fuel is:",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel)
+                                print("Current fuel is:",driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel ?? 0.0)
                                 let currentVehicle = UserDefaults.standard.string(forKey: "CurrentVehicle")
                                 
                                 if currentVehicle == nil {
@@ -48,38 +47,35 @@ struct ContentView: View {
                                 else {
                                     showFuelAlert = driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0  ? true  : false
                                 }
-                               
-                                
                                 print(showFuelAlert)
                             })
-                          /*  .onChange(of: scenePhase) { newPhase in
-                                if newPhase == .active {
-                                    showFuelAlert = true
-                                }
-                            }*/
                             .sheet(isPresented: $updateOdometer,  content: { UpdateOdometer()})
                             .sheet(isPresented: $addFuel, content: {AddFuelView()})
-                        .navigationTitle(Text("Home"))
+                            .navigationTitle(Text("Home"))
                            if driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.currentFuel == 0.0 && showFuelAlert {
                                AppAlertView(showFuel: $showFuelAlert)
                                    .frame(width: 270, height: 200, alignment: .center)
                                }
                     }
-                
-                        
                 }
                 .tabItem {
                     Image(systemName:"house")
                     Text("Home")
                 }
                 .tag(0)
+                ServicesTab()
+                    .tabItem {
+                        Image(systemName: "hammer.fill")
+                        Text("Services")
+                    }
+                    .tag(1)
                 if driver.first!.Cars.isEmpty {
                     SettingsView(make: "", model: "", year: 0, odometer: 0.0, fuelCapacity: 0.0, licensePlate: "", owner: "", driverLicense: "")
                         .tabItem {
                             Image(systemName: "gearshape.2.fill")
                             Text("Settings")
                         }
-                        .tag(1)
+                        .tag(2)
                 }
                 else {
                     let car = Car.fetchData()!
@@ -88,14 +84,14 @@ struct ContentView: View {
                             Image(systemName: "gearshape.2.fill")
                             Text("Settings")
                         }
-                        .tag(1)
+                        .tag(2)
                 }
                
             }
                     
         }
-        }
     }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

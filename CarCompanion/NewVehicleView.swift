@@ -35,7 +35,8 @@ struct NewVehicleView: View {
             VStack {
                 Spacer()
                 Form {
-                    AppTitleView(title: "CAR DETAILS")
+                   
+                    AppTitleView(title: "CAR DETAILS", font: .title3, weight: .semibold, color: .gray)
                         .padding(.top, 20)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
