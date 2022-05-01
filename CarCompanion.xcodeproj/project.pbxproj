@@ -149,7 +149,6 @@
 		72219ED22789FE3D00FD53DB = {
 			isa = PBXGroup;
 			children = (
-				72813441280F03FD000CDEB3 /* ServiceRecordsList.swift */,
 				723B7BF127B6C5DF0082CDA7 /* Model */,
 				72219EDD2789FE3D00FD53DB /* CarCompanion */,
 				72219EF32789FE3F00FD53DB /* CarCompanionTests */,
@@ -292,6 +291,7 @@
 			children = (
 				726031F127E38F07004A5222 /* ServicesTab.swift */,
 				7209B63E2800889000515C05 /* ServiceForm.swift */,
+				72813441280F03FD000CDEB3 /* ServiceRecordsList.swift */,
 			);
 			name = ServicesView;
 			sourceTree = "<group>";

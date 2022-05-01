@@ -16,20 +16,25 @@ struct ServiceRecordsList: View {
                     Text("Location")
                         .font(.system(size: 14, weight: .semibold, design: .default))
                         .foregroundColor(.gray)
+                        .frame(width: 200, alignment: .leading)
                     Text(serviceRecord.shopName!)
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
+                        .frame(width: 200, alignment: .leading)
                 }
+              
                 Spacer()
                 VStack {
                     Text("Total Cost")
                         .font(.system(size: 14, weight: .semibold, design: .default))
                         .foregroundColor(.gray)
+                        .frame(width: 100, alignment: .trailing)
                     Text(serviceRecord.totalCost, format: .currency(code: Locale.current.currencyCode!))
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .foregroundColor(.red)
+                        .frame(width: 100, alignment: .trailing)
                 }
             }
             Spacer()
