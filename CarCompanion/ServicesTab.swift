@@ -37,9 +37,11 @@ struct ServicesTab: View {
                            } )
                           
                        }
+                       .onDelete(perform: deleteServiceRecord)
+                       
                    }
                    .id(listID)
-               }               
+               }
                .frame(width: 400, height: 400, alignment: .center)
                .background(Color.red)
             }
@@ -51,7 +53,15 @@ struct ServicesTab: View {
                
         }
     }
-}
+   func deleteServiceRecord(at offsets: IndexSet) {
+        for offset in offsets {
+            if let service =  driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.serviceRecordsArray[offset] {
+                driver.first!.Cars[driver.first!.Cars.firstIndex(where: {$0.plateNumber == UserDefaults.standard.string(forKey: "CurrentVehicle")})!].dashboard?.removeFromServiceRecords(service)
+                Driver.saveContext(viewContext: viewContext)
+            }
+        }
+    }
+ }
 
 struct ServicesTab_Previews: PreviewProvider {
     static var previews: some View {
