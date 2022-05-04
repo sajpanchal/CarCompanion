@@ -103,6 +103,7 @@ struct ServiceForm: View {
                     serviceRecord.shopName = shopName
                     serviceRecord.dateOfService = dateOfService
                     serviceRecord.totalCost = totalCost
+                    serviceRecord.uniqueID = UUID()
                     for service in services {
                         serviceRecord.addToServices(service)
                     }
