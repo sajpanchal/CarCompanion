@@ -13,6 +13,7 @@ struct ServicesTab: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(entity: Driver.entity(), sortDescriptors: []) var driver: FetchedResults<Driver>
     @FetchRequest(entity: Car.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Car.timeStamp, ascending: true)]) var cars: FetchedResults<Car>
+    @FetchRequest(entity: ServiceRecords.entity(), sortDescriptors: []) var serviceRecords: FetchedResults<ServiceRecords>
     var body: some View {
         NavigationView {
            VStack {
@@ -52,6 +53,17 @@ struct ServicesTab: View {
            .navigationTitle("Services/Repairs")
                
         }
+        /*.onAppear(perform: {
+            for serviceRecord in serviceRecords {
+                if serviceRecord.uniqueID == nil {
+                    serviceRecord.uniqueID = UUID()
+                    print(serviceRecord.shopName)
+                    print(serviceRecord.DateOfService)
+                    Driver.saveContext(viewContext: viewContext)
+                }
+             
+            }
+        })*/
     }
    func deleteServiceRecord(at offsets: IndexSet) {
         for offset in offsets {
